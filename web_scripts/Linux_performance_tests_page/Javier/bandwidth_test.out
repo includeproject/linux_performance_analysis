@@ -1,0 +1,88 @@
+random-writers: (g=0): rw=randwrite, bs=32K-32K/32K-32K/32K-32K, ioengine=libaio, iodepth=4
+...
+fio-2.1.11
+Starting 4 processes
+random-writers: Laying out IO file(s) (1 file(s) / 64MB)
+random-writers: Laying out IO file(s) (1 file(s) / 64MB)
+random-writers: Laying out IO file(s) (1 file(s) / 64MB)
+random-writers: Laying out IO file(s) (1 file(s) / 64MB)
+
+random-writers: (groupid=0, jobs=1): err= 0: pid=6102: Thu Feb 12 18:38:03 2015
+  write: io=65536KB, bw=1684.3MB/s, iops=53894, runt=    38msec
+    slat (usec): min=11, max=60, avg=17.39, stdev= 3.50
+    clat (usec): min=1, max=130, avg=55.30, stdev= 9.22
+     lat (usec): min=15, max=185, avg=72.76, stdev=11.85
+    clat percentiles (usec):
+     |  1.00th=[   42],  5.00th=[   43], 10.00th=[   44], 20.00th=[   46],
+     | 30.00th=[   53], 40.00th=[   56], 50.00th=[   57], 60.00th=[   58],
+     | 70.00th=[   58], 80.00th=[   59], 90.00th=[   61], 95.00th=[   68],
+     | 99.00th=[   89], 99.50th=[   94], 99.90th=[  117], 99.95th=[  124],
+     | 99.99th=[  131]
+    lat (usec) : 2=0.05%, 20=0.05%, 50=26.17%, 100=73.34%, 250=0.39%
+  cpu          : usr=21.62%, sys=64.86%, ctx=5, majf=0, minf=7
+  IO depths    : 1=0.1%, 2=0.1%, 4=99.9%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued    : total=r=0/w=2048/d=0, short=r=0/w=0/d=0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+random-writers: (groupid=0, jobs=1): err= 0: pid=6103: Thu Feb 12 18:38:03 2015
+  write: io=65536KB, bw=2206.1MB/s, iops=70620, runt=    29msec
+    slat (usec): min=10, max=45, avg=13.35, stdev= 2.43
+    clat (usec): min=1, max=89, avg=41.73, stdev= 5.98
+     lat (usec): min=21, max=119, avg=55.12, stdev= 7.47
+    clat percentiles (usec):
+     |  1.00th=[   34],  5.00th=[   37], 10.00th=[   38], 20.00th=[   39],
+     | 30.00th=[   40], 40.00th=[   40], 50.00th=[   41], 60.00th=[   41],
+     | 70.00th=[   42], 80.00th=[   42], 90.00th=[   44], 95.00th=[   55],
+     | 99.00th=[   68], 99.50th=[   74], 99.90th=[   87], 99.95th=[   88],
+     | 99.99th=[   89]
+    lat (usec) : 2=0.05%, 50=93.80%, 100=6.15%
+  cpu          : usr=28.57%, sys=57.14%, ctx=1, majf=0, minf=8
+  IO depths    : 1=0.1%, 2=0.1%, 4=99.9%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued    : total=r=0/w=2048/d=0, short=r=0/w=0/d=0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+random-writers: (groupid=0, jobs=1): err= 0: pid=6104: Thu Feb 12 18:38:03 2015
+  write: io=65536KB, bw=2206.1MB/s, iops=70620, runt=    29msec
+    slat (usec): min=9, max=43, avg=13.38, stdev= 2.28
+    clat (usec): min=0, max=78, avg=41.74, stdev= 5.59
+     lat (usec): min=17, max=100, avg=55.17, stdev= 6.95
+    clat percentiles (usec):
+     |  1.00th=[   34],  5.00th=[   37], 10.00th=[   38], 20.00th=[   39],
+     | 30.00th=[   40], 40.00th=[   40], 50.00th=[   41], 60.00th=[   41],
+     | 70.00th=[   42], 80.00th=[   43], 90.00th=[   44], 95.00th=[   52],
+     | 99.00th=[   68], 99.50th=[   72], 99.90th=[   77], 99.95th=[   78],
+     | 99.99th=[   78]
+    lat (usec) : 2=0.05%, 20=0.05%, 50=93.90%, 100=6.01%
+  cpu          : usr=0.00%, sys=85.71%, ctx=2, majf=0, minf=6
+  IO depths    : 1=0.1%, 2=0.1%, 4=99.9%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued    : total=r=0/w=2048/d=0, short=r=0/w=0/d=0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+random-writers: (groupid=0, jobs=1): err= 0: pid=6105: Thu Feb 12 18:38:03 2015
+  write: io=65536KB, bw=1684.3MB/s, iops=53894, runt=    38msec
+    slat (usec): min=11, max=333, avg=17.32, stdev= 7.87
+    clat (usec): min=1, max=393, avg=55.25, stdev=15.59
+     lat (usec): min=17, max=414, avg=72.67, stdev=18.74
+    clat percentiles (usec):
+     |  1.00th=[   41],  5.00th=[   43], 10.00th=[   44], 20.00th=[   45],
+     | 30.00th=[   53], 40.00th=[   55], 50.00th=[   56], 60.00th=[   57],
+     | 70.00th=[   58], 80.00th=[   59], 90.00th=[   61], 95.00th=[   68],
+     | 99.00th=[   88], 99.50th=[   94], 99.90th=[  378], 99.95th=[  386],
+     | 99.99th=[  394]
+    lat (usec) : 2=0.05%, 20=0.05%, 50=25.88%, 100=73.63%, 250=0.24%
+    lat (usec) : 500=0.15%
+  cpu          : usr=10.81%, sys=75.68%, ctx=3, majf=0, minf=6
+  IO depths    : 1=0.1%, 2=0.1%, 4=99.9%, 8=0.0%, 16=0.0%, 32=0.0%, >=64=0.0%
+     submit    : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     complete  : 0=0.0%, 4=100.0%, 8=0.0%, 16=0.0%, 32=0.0%, 64=0.0%, >=64=0.0%
+     issued    : total=r=0/w=2048/d=0, short=r=0/w=0/d=0
+     latency   : target=0, window=0, percentile=100.00%, depth=4
+
+Run status group 0 (all jobs):
+  WRITE: io=262144KB, aggrb=6736.9MB/s, minb=1684.3MB/s, maxb=2206.1MB/s, mint=29msec, maxt=38msec
+
+Disk stats (read/write):
+  sda: ios=0/0, merge=0/0, ticks=0/0, in_queue=0, util=0.00%

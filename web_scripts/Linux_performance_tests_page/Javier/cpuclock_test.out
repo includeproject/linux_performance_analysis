@@ -1,0 +1,64 @@
+cs: reliable_tsc: yes
+time     4287  cycles[0]=2494
+time     4287  cycles[1]=2494
+time     4287  cycles[2]=2494
+time     4287  cycles[3]=2494
+time     4287  cycles[4]=2494
+time     4287  cycles[5]=2494
+time     4287  cycles[6]=2494
+time     4287  cycles[7]=2494
+time     4287  cycles[8]=2494
+time     4287  cycles[9]=2494
+time     4287  cycles[10]=2494
+time     4287  cycles[11]=2494
+time     4287  cycles[12]=2494
+time     4287  cycles[13]=2493
+time     4287  cycles[14]=2494
+time     4287  cycles[15]=2494
+time     4287  cycles[16]=2493
+time     4287  cycles[17]=2494
+time     4287  cycles[18]=2494
+time     4287  cycles[19]=2494
+time     4287  cycles[20]=2494
+time     4287  cycles[21]=2494
+time     4287  cycles[22]=2494
+time     4287  cycles[23]=2494
+time     4287  cycles[24]=2494
+time     4287  cycles[25]=2494
+time     4287  cycles[26]=2494
+time     4287  cycles[27]=2494
+time     4287  cycles[28]=2494
+time     4287  cycles[29]=2494
+time     4287  cycles[30]=2494
+time     4287  cycles[31]=2494
+time     4287  cycles[32]=2494
+time     4287  cycles[33]=2494
+time     4287  cycles[34]=2494
+time     4287  cycles[35]=2494
+time     4287  cycles[36]=2494
+time     4287  cycles[37]=2582
+time     4287  cycles[38]=2493
+time     4287  cycles[39]=2494
+time     4287  cycles[40]=2494
+time     4287  cycles[41]=2494
+time     4287  cycles[42]=2494
+time     4287  cycles[43]=2494
+time     4287  cycles[44]=2494
+time     4287  cycles[45]=2494
+time     4287  cycles[46]=2494
+time     4287  cycles[47]=2494
+time     4287  cycles[48]=2494
+time     4287  cycles[49]=2494
+time     4287  avg: 2494
+time     4287  mean=2495.898000, S=2.493847
+time     4287  inv_cycles_per_usec=6727
+cs: Testing 8 CPUs
+cs: cpu  2: 282282863 clocks seen
+cs: cpu  3: 304215462 clocks seen
+cs: cpu  0: 328395264 clocks seen
+cs: cpu  4: 334384368 clocks seen
+cs: cpu  6: 348062801 clocks seen
+cs: cpu  7: 347662879 clocks seen
+cs: cpu  1: 351335856 clocks seen
+cs: cpu  5: 351602457 clocks seen
+cs: Pass!

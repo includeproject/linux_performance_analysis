@@ -6,18 +6,19 @@
 # equal to 1 to stop the LTP installation.        #
 ###################################################
 
-wget -O autoconf-2.61.tar.bz2 ftp://ftp.gnu.org/gnu/autoconf/autoconf-2.61.tar.bz2
+#Variables definitions
+AUTOCONF_PATH="ftp://ftp.gnu.org/gnu/autoconf/"
+AUTOCONF_VERSION="autoconf-2.61.tar.bz2"
+PACKAGE_PATH="$AUTOCONF_PATH$AUTOCONF_VERSION"
 
-tar xvjf autoconf-2.61.tar.bz2
-
+#Getting files and uncompressing
+wget -O $AUTOCONF_VERSION $PACKAGE_PATH
+tar xvjf $AUTOCONF_VERSION
 cd autoconf*
 
 #Configure autoconf
-
 ./configure
-
 make
 
 #Install the package
-
 sudo make install

@@ -6,16 +6,18 @@
 # equal to 1 to stop the LTP installation.        #
 ###################################################
 
-wget -O bison-2.4.1.tar.gz http://ftp.gnu.org/gnu/bison/bison-2.4.1.tar.gz
+#Variables definitions
+BISON_PATH="http://ftp.gnu.org/gnu/bison/"
+BISON_VERSION="bison-2.4.1.tar.gz"
+PACKAGE_PATH="$BISON_PATH$BISON_VERSION"
 
-tar xvfz bison-2.4.1.tar.gz
-
+#Getting files and uncompressing
+wget -O $BISON_VERSION $PACKAGE_PATH
+tar xvfz $BISON_VERSION
 cd bison*
 
 #Configure Bison
-
 ./configure
-
 make
 
 

@@ -6,19 +6,19 @@
 # equal to 1 to stop the LTP installation.        #
 ###################################################
 
-wget -O byacc.tar.gz ftp://invisible-island.net/byacc/byacc.tar.gz
+#Variables definitions
+BYACC_PATH="ftp://invisible-island.net/byacc/"
+BYACC_VERSION="byacc.tar.gz"
+PACKAGE_PATH="$BYACC_PATH$BYACC_VERSION"
 
-tar xvfz byacc.tar.gz
-
+#Getting files and uncompressing
+wget -O $BYACC_VERSION $PACKAGE_PATH
+tar xvfz $BYACC_VERSION
 cd byacc*
 
 #Configure byacc
-
 ./configure
-
 make
 
-
 #Install the package
-
 sudo make  install

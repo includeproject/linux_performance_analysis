@@ -25,16 +25,7 @@
         </div>
         <div class="container-fluid">
             <div class="row-fluid">
-                <div class="span3" id="sidebar">
-                    <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
-                        <li class="active">
-                            <a href="index.php"><i class="icon-chevron-right"></i> LTP Results</a>
-                        </li>
-                        <li class="">
-                            <a href="powertop-results.php"><i class="icon-chevron-right"></i> Powertop Results</a>
-                        </li>
-                    </ul>
-                </div>
+                <?php include './scripts/nav-bar.php';?>
                 <div class="span9" id="content">
                     <div class="row-fluid">
                         <ul class="nav nav-tabs" role="tablist" id="myTab">

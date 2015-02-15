@@ -1,0 +1,17 @@
+#powertop-logo{
+	width: 160px;
+	height: 30px;
+	cursor: pointer;	
+}
+#loading-logo{
+	width: 25px;
+	height: 25px;
+	display: none;
+}
+#textLoad{
+	font-size: 12px;
+	display: none;
+}
+#nameFile, #directoryBox{
+	display: none;
+}

@@ -1,5 +1,7 @@
 #!/bin/sh
 
+set -x
+
 # =============================================================================
 # Scripts Variables
 # =============================================================================
@@ -25,18 +27,49 @@ gitPull() {
 	find . -maxdepth 1 -type d \( ! -name . \) -exec bash -c "cd '{}' && git pull" \;
 }
 
+compileCommon() {
+	directory=$1
+	cd $directory
+	./configure
+	make
+	su root -c "echo"
+	cd ../
+}
+
+compileLtp() {
+	directory=$1
+	cd $directory
+	make autotools
+	./configure
+	make all
+	su root -c "echo"
+	cd ../
+}
+
+compileKernel() {
+	echo "Tbd"
+}
+
 # =============================================================================
 # Script Main
 # =============================================================================
 
-# Source Code Git Repositories #
+# Source Code Git Repositories Clone & Update #
 
 test -d $directorySource || mkdir $directorySource 
+
 cd $directorySource
+
 gitClone $gitRepositoryLtp
 gitClone $gitRepositoryLinuxKernel
 gitClone $gitRepositoryFio
 gitPull
+
+# Source Code Git Repositories Compilation #
+
+compileCommon "fio"
+compileLtp "ltp"
+
 cd $directoryRoot
 
 # End of File

@@ -18,11 +18,13 @@ aptGet() {
 	su root -c "$aptGetName install $aptGetPackages"
 }
 
+
+
 # =============================================================================
 # Script Main
 # =============================================================================
 
-if [ -f /etc/debian_version ]; then
+if apt-get > /dev/null; then
 	aptGet
 fi
 

@@ -7,7 +7,7 @@ set -x
 # =============================================================================
 
 export directoryRoot=`pwd`
-export directorySource=$directoryRoot"/source"
+export directorySource=$directoryRoot"/sources"
 
 export gitRepositoryLtp="https://github.com/linux-test-project/ltp.git"
 export gitRepositoryLinuxKernel="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
@@ -30,24 +30,32 @@ gitPull() {
 compileCommon() {
 	directory=$1
 	cd $directory
+	make distclean
 	./configure
 	make
-	su root -c "echo"
+	#su root -c "make install"
 	cd ../
 }
 
 compileLtp() {
 	directory=$1
 	cd $directory
+	make distclean
 	make autotools
 	./configure
 	make all
-	su root -c "echo"
+	#su root -c "make install"
 	cd ../
 }
 
-compileKernel() {
-	echo "Tbd"
+compileLinuxKernel() {
+	directory=$1
+	cd $directory
+	make oldconfig
+	make -j3
+	#su root -c "make modules_install"
+	#su root -c "make install"
+	cd ../
 }
 
 # =============================================================================
@@ -68,7 +76,8 @@ gitPull
 # Source Code Git Repositories Compilation #
 
 compileCommon "fio"
-compileLtp "ltp"
+#compileLtp "ltp"
+compileLinuxKernel "linux"
 
 cd $directoryRoot
 

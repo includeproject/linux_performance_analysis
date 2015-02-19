@@ -1,17 +1,41 @@
 <!DOCTYPE html>
-
-<html class = "no-js">
+<html class="no-js">
 
     <head>
-        <title>Linux Analysis Performance</title>
-        <link href = "bootstrap/css/bootstrap.min.css" rel = "stylesheet" media = "screen">
-        <link href = "bootstrap/css/bootstrap-responsive.min.css" rel = "stylesheet" media = "screen">
-        <link href = "vendors/easypiechart/jquery.easy-pie-chart.css" rel = "stylesheet" media = "screen">
-        <link href = "assets/styles.css" rel = "stylesheet" media = "screen">
-        <script src = "vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
+        <title>Admin Home Page</title>
+        <!-- Bootstrap -->
+        <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
+        <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
+        <link href="vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">
+        <link href="assets/styles.css" rel="stylesheet" media="screen">
+        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+        <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+        <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
 
     <body>
+        <div class="modal fade" id="wait_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
+                        <h1 class="modal-title" id="myModalLabel">Wait a moment...</h1>
+                    </div>
+                    <div class="modal-body">
+                        <p>The scripts are being executed as fast as possible</p>
+                        <div class="" style="text-align: center;">
+                            <img src="assets/ajax-loader2.gif"/>
+                        </div>
+                    </div>
+                    <!--                    <div class="modal-footer">
+                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>-->
+                </div>
+            </div>
+        </div>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
                 <div class="container-fluid">
@@ -25,101 +49,201 @@
         </div>
         <div class="container-fluid">
             <div class="row-fluid">
-                <?php include './scripts/nav-bar.php';?>
+                <?php include './scripts/nav-bar.php'; ?>
+                <!--/span-->
                 <div class="span9" id="content">
                     <div class="row-fluid">
-                        <ul class="nav nav-tabs" role="tablist" id="myTab">
-                            <li role="presentation" class="active"><a href="#javier" aria-controls="javier" role="tab" data-toggle="tab">Javier</a></li>
-                            <li role="presentation"><a href="#johnny" aria-controls="johnny" role="tab" data-toggle="tab">Johnny</a></li>
-                            <li role="presentation"><a href="#lucero" aria-controls="lucero" role="tab" data-toggle="tab">Lucero</a></li>
-                            <li role="presentation"><a href="#ivan" aria-controls="ivan" role="tab" data-toggle="tab">Iv&aacute;n</a></li>
-                            <li role="presentation"><a href="#joyce" aria-controls="joyce" role="tab" data-toggle="tab">Joyce</a></li>
-                            <li role="presentation"><a href="#martin" aria-controls="martin" role="tab" data-toggle="tab">Mart&iacute;n</a></li>
-                        </ul>
-
-                        <div class="tab-content">
-                            <div role="tabpanel" class="tab-pane active" id="javier">
-                                <pre>
-                                    <?php
-                                    $log_javier = fopen('Javier/LTP_RUN_ON-2015_02_08-19h_51m_07s.log', 'r');
-                                   echo fread($log_javier, filesize('Javier/LTP_RUN_ON-2015_02_08-19h_51m_07s.log'));
-                                    ?>
-                                </pre> 
+                        <div class="jumbotron">
+                            <h1>
+                                These tests are executed on realtime!
+                            </h1>
+                            <p>
+                                Once you have uploaded the patch, this could be the first page you see, please select
+                                one tool and one script to execute.
+                            </p>
+                            <p>The meter animations has no functionality yet.</p>
+                        </div>
+                    </div>
+                    <div class="row-fluid">
+                        <!-- block -->
+                        <div class="block">
+                            <div class="navbar navbar-inner block-header">
+                                <div class="muted pull-left">Select an analysis script to execute</div>
                             </div>
-                            <div role="tabpanel" class="tab-pane" id="johnny">Debian 6</div>
-                            <div role="tabpanel" class="tab-pane" id="lucero">
-                                <!--<div class="row-fluid">-->
-                                <div role="tabpanel">
-                                    <ul class="nav nav-tabs" role="tablist" id='df'>
-                                        <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">LTP_RUN</a></li>
-                                        <li role="presentation"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">LTP_RUN_ALL_TESTS_1</a></li>
-                                        <li role="presentation"><a href="#messages" aria-controls="messages" role="tab" data-toggle="tab">LTP_RUN_ALL_TESTS_2</a></li>
-                                        <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">LTP_RUN_ALL_TESTS_3</a></li>
-                                    </ul>
-                                    <div class="tab-content">
-                                        <div role="tabpanel" class="tab-pane active" id="home">
-                                            <pre>
-                                                <?php
-                                                $log_lucero_0 = fopen('Lucero/LTP_RUN.log', 'r') or die('File not found');
-                                                echo fread($log_lucero_0, filesize('Lucero/LTP_RUN.log'));
-                                                ?>
-                                            </pre>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane" id="profile">
-                                            <pre>
-                                                <?php
-                                                $log_lucero_1 = fopen('Lucero/LTP_RUN_ALL_TESTS_1.log', 'r') or die('File not found');
-                                                echo fread($log_lucero_1, filesize('Lucero/LTP_RUN_ALL_TESTS_1.log'));
-                                                ?>
-                                            </pre>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane" id="messages">
-                                            <pre>
-                                                <?php
-                                                $log_lucero_2 = fopen('Lucero/LTP_RUN_ALL_TESTS_2.log', 'r') or die('File not found');
-                                                echo fread($log_lucero_2, filesize('Lucero/LTP_RUN_ALL_TESTS_2.log'));
-                                                ?>
-                                            </pre>
-                                        </div>
-                                        <div role="tabpanel" class="tab-pane" id="settings">
-                                            <pre>
-                                                <?php
-                                                $log_lucero_3 = fopen('Lucero/LTP_RUN_ALL_TESTS_3.log', 'r') or die('File not found');
-                                                echo fread($log_lucero_3, filesize('Lucero/LTP_RUN_ALL_TESTS_3.log'));
-                                                ?>
-                                            </pre>
-                                        </div>
+                            <div class="block-content collapse in">
+                                <div class="span4">
+                                    <div class="chart" data-percent="73">73%</div>
+                                    <div class="chart-bottom-heading">
+                                        <button class="btn btn-inverse" id="ltp_button">LTP</button>
+
+                                        <!--<span class="label label-info">LTP</span>-->
+
                                     </div>
                                 </div>
-                                <!--</div>-->
-                            </div>
-                            <div role="tabpanel" class="tab-pane" id="ivan">Fedora 20</div>
-                            <div role="tabpanel" class="tab-pane" id="joyce">Ubuntu 14.04</div>
-                            <div role="tabpanel" class="tab-pane" id="martin">Fedora 21</div>
-                        </div>
+                                <div class="span4">
+                                    <div class="chart" data-percent="53">53%</div>
+                                    <div class="chart-bottom-heading">
+                                        <!--<span class="label label-info">Powertop</span>-->
+                                        <button class="btn btn-primary" id="powertop_button">Powertop</button>
 
-                        <script>
-                            $(function () {
-                                $('#myTab a:last').tab('show')
-                            })
-                        </script>
+                                    </div>
+                                </div>
+                                <div class="span4">
+                                    <div class="chart" data-percent="83">83%</div>
+                                    <div class="chart-bottom-heading">
+                                        <!--<span class="label label-info">FIO</span>-->
+                                        <button class="btn btn-primary" id="fio_button">FIO</button>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+                        <!-- /block -->
+                    </div>
+                    <div id="available_scripts" class="row-fluid">
+                        <div class="tab-content">
+                            <div role="tabpanel" class="tab-pane active" id="ltp_scripts">
+                                <table id="ltp_scripts_table"class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Script name</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>ver_linux</td>
+                                            <td>This script shows everything about the linux distribution and physical environment</td>
+                                            <td><button id="execute_ltp_ver_linux" class="btn btn-success btn-mini">Execute</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="powertop_scripts">
+                                <table id="powertop_scripts_table" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Script name</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>Powertop</td>
+                                            <td>This script will show the results thrown by powertop</td>
+                                            <td><button id="execute_powertop_csv" class="btn btn-success btn-mini">Execute</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div role="tabpanel" class="tab-pane" id="fio_scripts">
+                                <table id="fio_scripts_table" class="table table-hover">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Script name</th>
+                                            <th>Description</th>
+                                            <th>Action</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>1</td>
+                                            <td>cpuclock-test</td>
+                                            <td>Perform test and validation of internal CPU clock<td>
+                                            <td><button id="execute_fio_cpuclock_test" class="btn btn-success btn-mini">Execute</button></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                    <!--In this section will be put the output of the scripts-->
+                    <div id="results_section" class="row-fluid">
                     </div>
                 </div>
             </div>
             <hr>
-            <footer>
-                <p></p>
-            </footer>
         </div>
+        <!--/.fluid-container-->
         <script src="vendors/jquery-1.9.1.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="vendors/easypiechart/jquery.easy-pie-chart.js"></script>
         <script src="assets/scripts.js"></script>
-        <!--        <script>
-                                    $(function () {
-                                        $('.chart').easyPieChart({animate: 1000});
-                                    });
-                </script>-->
+        <script>
+            $(function () {
+                $('.chart').easyPieChart({animate: 1000});
+            });
+        </script>
+        <script>
+            $('#wait_modal').modal({
+                backdrop: 'static',
+                keyboard: false,
+                show: false
+            });
+            function exclude() {
+                $("#ltp_button").attr("class", "btn btn-primary");
+                $("#powertop_button").attr("class", "btn btn-primary");
+                $("#fio_button").attr("class", "btn btn-primary");
+            }
+            $("#ltp_button").click(function () {
+                exclude();
+                $(this).attr("class", "btn btn-inverse");
+                $("#ltp_scripts").attr("class", "tab-pane active");
+                $("#powertop_scripts").attr("class", "tab-pane");
+                $("#fio_scripts").attr("class", "tab-pane");
+            });
+            $("#powertop_button").click(function () {
+                exclude();
+                $(this).attr("class", "btn btn-inverse");
+                $("#ltp_scripts").attr("class", "tab-pane");
+                $("#powertop_scripts").attr("class", "tab-pane active");
+                $("#fio_scripts").attr("class", "tab-pane");
+            });
+            $("#fio_button").click(function () {
+                exclude();
+                $(this).attr("class", "btn btn-inverse");
+                $("#ltp_scripts").attr("class", "tab-pane");
+                $("#powertop_scripts").attr("class", "tab-pane");
+                $("#fio_scripts").attr("class", "tab-pane active");
+            });
+            $("#execute_ltp_ver_linux").click(function () {
+                $('#wait_modal').modal('show');
+                $.ajax({
+                    url: "./scripts/ltp.php"
+                }).done(function (data) {
+                    $("#results_section").html('<pre>' + data + '</pre>');
+                    $('#wait_modal').modal('hide');
+                }).fail(function () {
+                    alert('Failed');
+                });
+            });
+            $("#execute_powertop_csv").click(function () {
+                $('#wait_modal').modal('show');
+                $.ajax({
+                    url: "./scripts/powertop.php"
+                }).done(function (data) {
+                    $('#wait_modal').modal('hide');
+                    $("#results_section").html('<pre>' + data + '</pre>');
+                });
+            });
+            $("#execute_fio_cpuclock_test").click(function () {
+                $('#wait_modal').modal('show');
+                $.ajax({
+                    url: "./scripts/fio.php"
+                }).done(function (data) {
+                    $('#wait_modal').modal('hide');
+                    $("#results_section").html('<pre>' + data + '</pre>');
+                });
+            });
+        </script>
     </body>
 
 </html>

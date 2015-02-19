@@ -12,13 +12,13 @@ echo '
     <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">
                         <li class="">
-                            <a href="http://' . $path . '/pages/index.php"><i class="icon-chevron-right"></i> LTP Results</a>
-                        </li>
-                        <li class="">
-                            <a href="http://' . $path . '/pages/powertop-results.php"><i class="icon-chevron-right"></i> Powertop Results</a>
+                            <a href="http://' . $path . '/pages/index.php"><i class="icon-chevron-right"></i> Perform tests</a>
                         </li>
                         <li class="">
                             <a href="http://' . $path . '/pages/applying_patches.php"><i class="icon-chevron-right"></i> Upload a patch</a>
+                        </li>
+                        <li class="">
+                            <a href="http://' . $path . '/pages/about.php"><i class="icon-chevron-right"></i> About</a>
                         </li>
                     </ul>
                 </div>

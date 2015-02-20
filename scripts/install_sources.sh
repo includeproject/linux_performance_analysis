@@ -12,6 +12,7 @@ export directorySource=$directoryRoot"/sources"
 export gitRepositoryLtp="https://github.com/linux-test-project/ltp.git"
 export gitRepositoryLinuxKernel="https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git"
 export gitRepositoryFio="git://git.kernel.dk/fio.git"
+export gitRepositoryFioVisualizer="https://github.com/01org/fiovisualizer.git"
 
 export packageGit=git
 

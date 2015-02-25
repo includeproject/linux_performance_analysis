@@ -8,19 +8,13 @@
         <link href="bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
         <link href="vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">
         <link href="assets/styles.css" rel="stylesheet" media="screen">
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
         <script src="vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
-
     <body>
         <div class="modal fade" id="wait_modal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
             <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <!--<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>-->
                         <h1 class="modal-title" id="myModalLabel">Wait a moment...</h1>
                     </div>
                     <div class="modal-body">
@@ -29,10 +23,6 @@
                             <img src="assets/ajax-loader2.gif"/>
                         </div>
                     </div>
-                    <!--                    <div class="modal-footer">
-                                            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                                            <button type="button" class="btn btn-primary">Save changes</button>
-                                        </div>-->
                 </div>
             </div>
         </div>
@@ -65,7 +55,6 @@
                         </div>
                     </div>
                     <div class="row-fluid">
-                        <!-- block -->
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left">Select an analysis script to execute</div>
@@ -75,15 +64,11 @@
                                     <div class="chart" data-percent="73">73%</div>
                                     <div class="chart-bottom-heading">
                                         <button class="btn btn-inverse" id="ltp_button">LTP</button>
-
-                                        <!--<span class="label label-info">LTP</span>-->
-
                                     </div>
                                 </div>
                                 <div class="span4">
                                     <div class="chart" data-percent="53">53%</div>
                                     <div class="chart-bottom-heading">
-                                        <!--<span class="label label-info">Powertop</span>-->
                                         <button class="btn btn-primary" id="powertop_button">Powertop</button>
 
                                     </div>
@@ -91,15 +76,12 @@
                                 <div class="span4">
                                     <div class="chart" data-percent="83">83%</div>
                                     <div class="chart-bottom-heading">
-                                        <!--<span class="label label-info">FIO</span>-->
                                         <button class="btn btn-primary" id="fio_button">FIO</button>
-
                                     </div>
                                 </div>
 
                             </div>
                         </div>
-                        <!-- /block -->
                     </div>
                     <div id="available_scripts" class="row-fluid">
                         <div class="tab-content">
@@ -165,14 +147,12 @@
                             </div>
                         </div>
                     </div>
-                    <!--In this section will be put the output of the scripts-->
                     <div id="results_section" class="row-fluid">
                     </div>
                 </div>
             </div>
             <hr>
         </div>
-        <!--/.fluid-container-->
         <script src="vendors/jquery-1.9.1.min.js"></script>
         <script src="bootstrap/js/bootstrap.min.js"></script>
         <script src="vendors/easypiechart/jquery.easy-pie-chart.js"></script>

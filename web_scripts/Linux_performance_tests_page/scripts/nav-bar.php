@@ -20,6 +20,9 @@ echo '
                         <li class="">
                             <a href="http://' . $path . '/pages/about.php"><i class="icon-chevron-right"></i> About</a>
                         </li>
+                        <li class="">
+                            <a href="http://' . $path . '/pages/user_panel.php"><i class="icon-chevron-right"></i> User panel</a>
+                        </li>
                     </ul>
                 </div>
 ';

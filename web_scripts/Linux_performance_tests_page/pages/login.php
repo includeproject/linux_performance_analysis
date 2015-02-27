@@ -5,7 +5,7 @@ session_unset();
  
 session_destroy(); 
 // Se destruye la session existente de esta forma no permite el duplicado.
-echo $_SERVER['DOCUMENT_ROOT'].'/upload/user';
+
  ?>
 <!DOCTYPE html>
 
@@ -33,8 +33,9 @@ echo $_SERVER['DOCUMENT_ROOT'].'/upload/user';
           <input type="checkbox" value="remember-me"> Remember me
         </label>
         <button class="btn btn-large btn-primary" name="login" type="submit" value="Crear sesión">Sign in</button>
+        <button class="btn btn-default btn-link pull-right" type="button" onclick="location.href=user_register.php">Register Account!</button>      
       </form>
-
+      
     </div> <!-- /container -->
     <script src="vendors/jquery-1.9.1.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>

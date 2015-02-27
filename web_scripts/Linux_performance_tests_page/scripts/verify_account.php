@@ -65,8 +65,9 @@ include_once "conexion.php";
     } 
 
     function create_register($firstname, $lastname,$user,$email,$password,&$result) { 
+        $host_dir = $_SERVER['DOCUMENT_ROOT']."/upload/".$user;
         $sql = "INSERT INTO user VALUES (0,'$user','$password','$firstname',
-                  '$lastname','$email','$host_dir','0','2')"; 
+                  '$lastname','$email','$host_dir','1','2')"; 
         $rslt = mysql_query($sql); 
         if($rslt){
           return 1;

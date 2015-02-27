@@ -1,6 +1,6 @@
 DROP DATABASE IF EXISTS LinuxPerformanceAnalysis;
 CREATE DATABASE LinuxPerformanceAnalysis;
-
+USE LinuxPerformanceAnalysis;
 CREATE TABLE `user` (
   `id_user` int(11) NOT NULL AUTO_INCREMENT COMMENT 'number of user, used like id',
   `user` varchar(16) NOT NULL COMMENT 'username, that is used for login',

@@ -1,3 +1,11 @@
+<?php
+     /* Empezamos la sesión */
+     session_start();
+     /* Si no hay una sesión creada, redireccionar al index. */
+     if(empty($_SESSION['username'])) { // Recuerda usar corchetes.
+        header('Location: login.php');
+     }
+?>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -34,6 +42,22 @@
                         <span class="icon-bar"></span>
                     </a>
                     <a class="brand" href="#">Linux Performance Analysis</a>
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> 
+                                <i class="icon-user"></i><?=$_SESSION['username'];?> <i class="caret"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a tabindex="-1" href="#">Profile</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1" href="login.php">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>

@@ -63,7 +63,7 @@
              maxNumberOfFiles: 10,
              */
             maxFileSize: 5000000, // 5 MB
-            acceptFileTypes: /(\.|\/)(patch|diff)$/i,
+            acceptFileTypes: /(\.|\/)(patch|diff|xz)$/i,
             // Function returning the current number of files,
             // has to be overriden for maxNumberOfFiles validation:
             getNumberOfFiles: $.noop,

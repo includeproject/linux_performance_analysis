@@ -1,0 +1,288 @@
+***PowerTOP Report***
+**System Information**
+
+PowerTOP Version;v2.4
+Kernel Version;Linux version 3.11.10-17-desktop (geeko@buildhost) (gcc version 4.8.1 20130909 [gcc-4_8-branch revision 202388] (SUSE Linux) ) #1 SMP PREEMPT Mon Jun 16 15:28:13 UTC 2014 (fba7c1f)
+System Name;Intel Corporation Intel powered classmate PC Clamshell
+CPU Information;2x  Intel(R) Celeron(R) CPU 847 @ 1.10GHz
+OS Information;openSUSE 13.1 (Bottle) (x86_64)
+
+**Power Consumption Summary**
+390.4 wakeups/second, 77.7 GPU ops/second, 0.0 VFS ops/sec, 77.3 GFX wakes/sec and 19.6% CPU use
+
+Usage;Events/s;Category;Description
+100.0%;;Device;Audio codec hwC0D3: Intel
+100.0%;;Device;Audio codec hwC0D0: Realtek
+  0.9%; 66.1;Process;/opt/google/chrome/chrome  
+  0.1%; 78.9;Timer;hrtimer_wakeup
+  0.4%; 66.2;Timer;tick_sched_timer
+  0.4%; 56.7;Interrupt;[4] block(softirq)
+  0.9%; 36.8;Process;/opt/google/chrome/chrome --type=gpu-process --channel=10218.0.475008101 --supports-dual-gpus=false --gpu-driver-bug-workaround
+ 11.7%;  1.2;Process;/usr/bin/applydeltarpm -p -p /var/cache/zypp/packages/repo-update/noarch/kernel-firmware-20130714git-2.17.1_2.21.1.noarch.drpm 
+  0.0%; 27.9;kWork;bdi_writeback_workfn
+  0.4%; 25.3;Process;kwin -session 101c0179173153000140570716000000044890000_1424229297_902484 
+  0.7%; 24.6;Process;/usr/java/latest/bin/java -Djdk.home=/usr/java/latest -classpath /home/labsol/netbeans-8.0.2/platform/lib/boot.jar:/home/labsol
+
+**Processor Idle state report**
+
+Package 0;;Core 0;;CPU 0
+;;;;;;C0 active; 53.5%;
+;;;;;;POLL;  0.0%;   0.0 ms
+;;;;;;C1E-SNB;  4.2%;   0.5 ms
+C2 (pc2);  0.4%;;;;;;;
+C3 (pc3);  1.9%;;C3 (cc3);  3.3%;;C3-SNB;  3.4%;   2.3 ms
+C6 (pc6);  0.3%;;C6 (cc6);  0.3%;;C6-SNB;  0.3%;   1.4 ms
+C7 (pc7);  1.3%;;C7 (cc7);  4.8%;;C7-SNB;  4.9%;   2.8 ms
+;;Core 1;;CPU 1
+;;;;;C0 active; 36.5%;
+;;;;;POLL;  0.0%;   0.0 ms
+;;;;;C1E-SNB;  2.5%;   0.5 ms
+;;;;;;;
+;;C3 (cc3);  8.0%;;C3-SNB;  8.1%;   3.6 ms
+;;C6 (cc6);  1.2%;;C6-SNB;  1.2%;   3.4 ms
+;;C7 (cc7); 16.7%;;C7-SNB; 16.9%;   3.9 ms
+;;GPU 31059968;
+;;;;
+;;Powered On; 16.6%;
+;;RC6; 83.4%;
+;;RC6p;  0.0%;
+;;RC6pp;  0.0%;
+;;;;
+;;;;
+
+**Processor Frequency Report**
+
+Package 0;;Core 0;;CPU 0
+;;;;;;Actual;  1086 MHz
+Idle;  48.0% ;;Idle;  69.8% ;;Idle;  69.8% 
+ 900 MHz;   1.0% ;;1000 MHz;   1.2% ;;1000 MHz;   1.2% 
+1100 MHz;  49.0% ;;1100 MHz;  28.4% ;;1100 MHz;  28.4% 
+1000 MHz;   1.8% ;; 900 MHz;   0.6% ;; 900 MHz;   0.6% 
+ 800 MHz;   0.1% ;; 800 MHz;   0.0% ;; 800 MHz;   0.0% 
+;;Core 1;;CPU 1
+;;;;;Actual;  1090 MHz
+;;Idle;  63.8% ;;Idle;  63.8% 
+;;1000 MHz;   0.9% ;;1000 MHz;   0.9% 
+;;1100 MHz;  34.8% ;;1100 MHz;  34.8% 
+;; 900 MHz;   0.5% ;; 900 MHz;   0.5% 
+;; 800 MHz;   0.0% ;; 800 MHz;   0.0% 
+
+**Overview of Software Power Consumers**
+
+Usage;Wakeups/s;GPU ops/s;Disk IO/s;GFX Wakeups/s;Category;Description
+  8.7 ms/s; 19.6; 46.5;; 40.9;Process;/opt/google/chrome/chrome  
+  1.3 ms/s; 78.9;;;;Timer;hrtimer_wakeup
+  4.4 ms/s; 66.2;;;;Timer;tick_sched_timer
+  3.8 ms/s; 56.7;;;;Interrupt;[4] block(softirq)
+  8.5 ms/s; 25.4; 11.4;; 25.5;Process;/opt/google/chrome/chrome --type=gpu-process --channel=10218.0.475008101 --supports-dual-gpus=false --gpu-driver-bug-workaround
+117.3 ms/s;  1.2;;;;Process;/usr/bin/applydeltarpm -p -p /var/cache/zypp/packages/repo-update/noarch/kernel-firmware-20130714git-2.17.1_2.21.1.noarch.drpm 
+238.4 us/s; 16.6; 11.3;;;kWork;bdi_writeback_workfn
+  3.8 ms/s; 17.3;  8.0;;  9.8;Process;kwin -session 101c0179173153000140570716000000044890000_1424229297_902484 
+  7.4 ms/s; 24.6;;;  0.7;Process;/usr/java/latest/bin/java -Djdk.home=/usr/java/latest -classpath /home/labsol/netbeans-8.0.2/platform/lib/boot.jar:/home/labsol
+  2.7 ms/s; 22.7;;;;Interrupt;[41] i915
+ 14.5 ms/s; 15.4;;;;Process;/opt/google/chrome/chrome --type=renderer --enable-deferred-image-decoding --lang=es --force-fieldtrials=ChromeSuggestions/Defa
+  2.4 ms/s;  9.1;;;;Process;/usr/bin/pulseaudio --start --log-target=syslog 
+131.9 us/s;  5.7;;;;kWork;ieee80211_iface_work
+  6.6 ms/s;  1.1;  0.4;;;kWork;ieee80211_scan_work
+582.1 us/s;  3.5;;;;Interrupt;[6] tasklet(softirq)
+542.6 us/s;  3.5;;;;Timer;intel_pstate_timer_func
+  1.4 ms/s;  2.5;;;;Process;kdeinit4: kmix [kdeinit] -session 101c017917315300014057071750 
+228.5 us/s;  2.8;;;;Interrupt;[7] sched(softirq)
+ 11.6 us/s;  2.5;;;;kWork;scsi_requeue_run_queue
+ 43.2 us/s;  2.3;;;;Process;[rcu_preempt]
+  1.5 ms/s;  1.7;;;;Interrupt;[1] timer(softirq)
+ 87.2 us/s;  2.2;;;;kWork;cfq_kick_queue
+  3.8 ms/s;;;;;Process;/usr/bin/Xorg -br :0 vt7 -nolisten tcp -auth /var/lib/kdm/AuthFiles/A:0-xReFDb 
+384.7 us/s;  1.3;;;;Process;kdeinit4: plasma-desktop [kdeinit] 
+157.3 us/s;  1.0;;;;Process;threaded-ml
+  1.5 ms/s;  0.3;;;;Process;[kswapd0]
+271.1 us/s;  0.6;;;;Process;kdeinit4: kded4 [kdeinit] 
+113.0 us/s;  0.6;;;;Process;/usr/bin/knotify4 
+ 58.4 us/s;  0.6;;;;kWork;cache_reap
+  1.5 ms/s;;;;;Interrupt;[40] SATA controller
+  7.7 us/s;  0.6;;;;kWork;rt2x00link_tuner
+  6.5 us/s;  0.4;;;;kWork;vmpressure_work_fn
+ 94.2 us/s;  0.4;;;;Process;/opt/google/chrome/chrome --type=renderer --enable-deferred-image-decoding --lang=es --force-fieldtrials=ChromeSuggestions/Defa
+535.0 us/s; 0.05;  0.1;;;kWork;ieee80211_sta_monitor_work
+  5.9 us/s;  0.4;;;;kWork;blk_delay_work
+  2.0 us/s;  0.4;;;;kWork;i915_gem_retire_work_handler
+112.3 us/s; 0.25;;;;Timer;process_timeout
+415.5 us/s; 0.10;;;;Process;powertop --csv=/srv/www/htdocs/linux_performance_analysis/web_scripts/Linux_performance_tests_page/scripts/result.csv 
+  2.1 us/s; 0.25;;;;kWork;mei_timer
+132.1 us/s; 0.10;;;  0.3;Process;kdeinit4: konsole [kdeinit] 
+  3.9 us/s; 0.20;;;;Interrupt;[2] net tx(softirq)
+  2.8 us/s; 0.15;;;;Timer;watchdog_timer_fn
+  2.1 us/s; 0.15;;;;Timer;sched_rt_period_timer
+  1.8 us/s; 0.15;;;;kWork;rfkill_poll
+ 78.7 us/s; 0.10;;;;Process;/usr/bin/ktorrent -session 101c0179173153000142410503400000012940018_1424229297_335667 
+ 67.5 us/s; 0.10;;;;Process;kdeinit4: krunner [kdeinit] 
+  2.8 us/s; 0.10;;;;Process;/usr/sbin/httpd2-prefork -f /etc/apache2/httpd.conf -D SYSTEMD -DFOREGROUND -k start 
+100.1 us/s; 0.05;;;;kWork;rt2x00link_vcocal
+207.2 us/s;;;;;Interrupt;[9] RCU(softirq)
+168.1 us/s;;;;;Interrupt;[17] 0000:02:00.0
+ 28.7 us/s; 0.05;;;;Process;[rcuop/0]
+ 11.1 us/s; 0.05;;;;Process;[jbd2/sda7-8]
+  1.9 us/s; 0.05;;;;Process;/usr/sbin/nscd --foreground 
+  0.6 us/s; 0.05;;;;kWork;neigh_periodic_work
+  0.4 us/s; 0.05;;;;Process;[watchdog/0]
+  0.2 us/s; 0.05;;;;kWork;ioc_release_fn
+ 65.3 us/s;;;;;Process;/bin/dbus-daemon --fork --print-pid 5 --print-address 7 --session 
+ 52.9 us/s;;;;;Process;[kworker/u16:3]
+ 45.4 us/s;;;;;Timer;delayed_work_timer_fn
+ 45.2 us/s;;;;;Interrupt;[9] acpi
+ 37.7 us/s;;;;;Process;[kworker/0:1H]
+ 28.0 us/s;;;;;Timer;cfq_idle_slice_timer
+ 22.6 us/s;;;;;Timer;tcp_keepalive_timer
+ 21.7 us/s;;;;;Process;/bin/dbus-daemon --system --address=systemd: --nofork --nopidfile --systemd-activation 
+ 18.2 us/s;;;;;Process;[rcuop/1]
+ 12.3 us/s;;;;;Timer;tcp_delack_timer
+ 11.9 us/s;;;;;kWork;vmstat_update
+ 11.4 us/s;;;;;Process;[migration/0]
+ 10.9 us/s;;;;;Process;[migration/1]
+ 10.3 us/s;;;;;Process;[jbd2/sda6-8]
+ 10.1 us/s;;;;;Timer;clocksource_watchdog
+  8.8 us/s;;;;;Timer;i915_hangcheck_elapsed
+  8.3 us/s;;;;;Timer;tcp_write_timer
+  8.3 us/s;;;;;Process;/usr/lib/systemd/systemd-logind 
+  5.1 us/s;;;;;Process;/sbin/init showopts 
+  5.0 us/s;;;;;Interrupt;[8] hrtimer(softirq)
+  4.6 us/s;;;;;Process;[kworker/0:1]
+  4.5 us/s;;;;;kWork;rt2x00link_agc
+  3.0 us/s;;;;;Process;[kworker/1:2]
+  2.9 us/s;;;;;Process;avahi-daemon: running [linux-rkso.local] 
+  2.7 us/s;;;;;Timer;fib6_gc_timer_cb
+  2.7 us/s;;;;;Timer;death_by_timeout
+  2.3 us/s;;;;;Process;[ksoftirqd/0]
+  1.6 us/s;;;;;kWork;__cfg80211_scan_done
+  1.6 us/s;;;;;Process;[kworker/u16:1]
+  1.2 us/s;;;;;Timer;writeout_period
+  1.2 us/s;;;;;kWork;wireless_nlevent_process
+  1.1 us/s;;;;;Process;[ksoftirqd/1]
+  0.9 us/s;;;;;Timer;sta_tx_agg_session_timer_expirek
+  0.8 us/s;;;;;Timer;commit_timeout
+  0.6 us/s;;;;;Process;[khugepaged]
+  0.4 us/s;;;;;Timer;ieee80211_sta_timer
+  0.3 us/s;;;;;Process;[kworker/1:1H]
+
+**Device Power Report**
+
+Usage;Device name
+ 19.6%;CPU core
+ 19.6%;CPU misc
+100.0%;Audio codec hwC0D3: Intel
+100.0%;Audio codec hwC0D0: Realtek
+ 77.7 ops/s;GPU misc
+ 77.7 ops/s;GPU core
+100.0%;Display backlight
+ 98.7%;Display backlight
+100.0%;USB device: EHCI Host Controller
+100.0%;PCI Device: Realtek Semiconductor Co., Ltd. RTL8101E/RTL8102E PCI Express Fast Ethernet controller
+100.0%;PCI Device: Ralink corp. RT3290 Wireless 802.11n 1T/1R PCIe
+100.0%;PCI Device: Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller
+100.0%;PCI Device: Intel Corporation 2nd Generation Core Processor Family DRAM Controller
+100.0%;Radio device: rt2800pci
+100.0%;USB device: USB Optical Mouse (Logitech)
+100.0%;USB device: Dell USB Entry Keyboard (Dell)
+100.0%;PCI Device: Intel Corporation 7 Series Chipset Family 6-port SATA Controller [AHCI mode]
+100.0%;USB device: usb-device-8087-0024
+100.0%;PCI Device: Intel Corporation 7 Series/C210 Series Chipset Family SMBus Controller
+100.0%;PCI Device: Intel Corporation 7 Series Chipset Family LPC Controller
+100.0%;PCI Device: Ralink corp. RT3290 Bluetooth
+100.0%;PCI Device: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 2
+100.0%;PCI Device: Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 1
+100.0%;PCI Device: Intel Corporation 7 Series/C210 Series Chipset Family High Definition Audio Controller
+100.0%;PCI Device: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #2
+100.0%;PCI Device: Intel Corporation 7 Series/C210 Series Chipset Family MEI Controller #1
+100.0%;PCI Device: Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #1
+  9.2 pkts/s;Network interface: wlp2s0f0 (rt2800pci)
+  0.0 pkts/s;Network interface: enp1s0 (r8169)
+  0.0%;USB device: HD Webcam (Bison)
+  0.0%;USB device: EHCI Host Controller
+  0.0%;USB device: usb-device-8087-0024
+
+**Process device activity**
+
+Process;Device
+systemd;/dev/autofs
+;/dev/kmsg
+systemd-journal;/dev/kmsg
+;/dev/kmsg
+wpa_supplicant;/dev/rfkill
+systemd-logind;/dev/input/event10
+;/dev/input/event2
+;/dev/input/event3
+;/dev/input/event4
+;/dev/input/event5
+;/dev/input/event6
+;/dev/input/event9
+rsyslogd;/dev/xconsole
+Xorg;/dev/dri/card0
+;/dev/input/event0
+;/dev/input/event1
+;/dev/input/event16
+;/dev/input/event17
+;/dev/input/event3
+;/dev/input/event4
+;/dev/input/event5
+;/dev/input/event6
+;/dev/input/event7
+;/dev/input/event9
+;/dev/vga_arbiter
+bluetoothd;/dev/rfkill
+upowerd;/dev/cpu_dma_latency
+;/dev/input/event2
+;/dev/network_latency
+kwin;/dev/dri/card0
+pulseaudio;/dev/snd/controlC0
+;/dev/snd/controlC0
+;/dev/snd/controlC0
+gvfsd-fuse;/dev/fuse
+java;/dev/dri/card0
+;/dev/dri/card0
+;/dev/random
+;/dev/random
+;/dev/random
+;/dev/random
+;/dev/random
+chrome;/dev/dri/card0
+;/dev/dri/card0
+
+**Software Settings in need of Tuning**
+
+Description;Script
+VM writeback timeout;"echo '1500' > '/proc/sys/vm/dirty_writeback_centisecs';"
+Enable SATA link power Managmenet for host0;"echo 'min_power' > '/sys/class/scsi_host/host0/link_power_management_policy';"
+Enable SATA link power Managmenet for host1;"echo 'min_power' > '/sys/class/scsi_host/host1/link_power_management_policy';"
+Enable SATA link power Managmenet for host2;"echo 'min_power' > '/sys/class/scsi_host/host2/link_power_management_policy';"
+Enable SATA link power Managmenet for host3;"echo 'min_power' > '/sys/class/scsi_host/host3/link_power_management_policy';"
+Enable Audio codec power management;"echo '1' > '/sys/module/snd_hda_intel/parameters/power_save';"
+NMI watchdog should be turned off;"echo '0' > '/proc/sys/kernel/nmi_watchdog';"
+Autosuspend for USB device Dell USB Entry Keyboard [Dell];"echo 'auto' > '/sys/bus/usb/devices/2-1.2/power/control';"
+Autosuspend for USB device USB Optical Mouse [Logitech];"echo 'auto' > '/sys/bus/usb/devices/2-1.4/power/control';"
+Runtime PM for PCI Device Intel Corporation 7 Series/C210 Series Chipset Family SMBus Controller;"echo 'auto' > '/sys/bus/pci/devices/0000:00:1f.3/power/control';"
+Runtime PM for PCI Device Intel Corporation 2nd Generation Core Processor Family DRAM Controller;"echo 'auto' > '/sys/bus/pci/devices/0000:00:00.0/power/control';"
+Runtime PM for PCI Device Intel Corporation 7 Series/C210 Series Chipset Family MEI Controller #1;"echo 'auto' > '/sys/bus/pci/devices/0000:00:16.0/power/control';"
+Runtime PM for PCI Device Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #2;"echo 'auto' > '/sys/bus/pci/devices/0000:00:1a.0/power/control';"
+Runtime PM for PCI Device Intel Corporation 7 Series/C210 Series Chipset Family High Definition Audio Controller;"echo 'auto' > '/sys/bus/pci/devices/0000:00:1b.0/power/control';"
+Runtime PM for PCI Device Ralink corp. RT3290 Bluetooth;"echo 'auto' > '/sys/bus/pci/devices/0000:02:00.1/power/control';"
+Runtime PM for PCI Device Ralink corp. RT3290 Wireless 802.11n 1T/1R PCIe;"echo 'auto' > '/sys/bus/pci/devices/0000:02:00.0/power/control';"
+Runtime PM for PCI Device Intel Corporation 2nd Generation Core Processor Family Integrated Graphics Controller;"echo 'auto' > '/sys/bus/pci/devices/0000:00:02.0/power/control';"
+Runtime PM for PCI Device Intel Corporation 7 Series Chipset Family 6-port SATA Controller [AHCI mode];"echo 'auto' > '/sys/bus/pci/devices/0000:00:1f.2/power/control';"
+Runtime PM for PCI Device Intel Corporation 7 Series Chipset Family LPC Controller;"echo 'auto' > '/sys/bus/pci/devices/0000:00:1f.0/power/control';"
+Runtime PM for PCI Device Intel Corporation 7 Series/C210 Series Chipset Family USB Enhanced Host Controller #1;"echo 'auto' > '/sys/bus/pci/devices/0000:00:1d.0/power/control';"
+Runtime PM for PCI Device Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 1;"echo 'auto' > '/sys/bus/pci/devices/0000:00:1c.0/power/control';"
+Runtime PM for PCI Device Intel Corporation 7 Series/C210 Series Chipset Family PCI Express Root Port 2;"echo 'auto' > '/sys/bus/pci/devices/0000:00:1c.1/power/control';"
+Runtime PM for PCI Device Realtek Semiconductor Co., Ltd. RTL8101E/RTL8102E PCI Express Fast Ethernet controller;"echo 'auto' > '/sys/bus/pci/devices/0000:01:00.0/power/control';"
+Wake-on-lan status for device enp1s0;"ethtool -s enp1s0 wol d;"
+
+**Optimal Tuned Software Settings**
+
+Description
+Autosuspend for USB device HD Webcam [Bison]
+Autosuspend for USB device EHCI Host Controller [usb1]
+Autosuspend for USB device EHCI Host Controller [usb2]
+Autosuspend for unknown USB device 1-1 (8087:0024)
+Autosuspend for unknown USB device 2-1 (8087:0024)
+Wake-on-lan status for device wlp2s0f0
+Using 'ondemand' cpufreq governor
+

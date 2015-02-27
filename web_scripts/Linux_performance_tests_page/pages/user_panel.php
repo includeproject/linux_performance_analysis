@@ -1,11 +1,9 @@
 <?php
      /* Empezamos la sesión */
      session_start();
-     /* Creamos la sesión */
-    $_SESSION['username'] = $_POST['username'];
-    $pass = $_POST['pass'];
+    
      /* Si no hay una sesión creada, redireccionar al index. */
-     if(empty($_SESSION['username']) && empty($pass)){ // Recuerda usar corchetes.
+     if(empty($_SESSION['username']) && empty($_SESSION['pass'])){ // Recuerda usar corchetes.
         header('Location: login.php');
      }
 ?>

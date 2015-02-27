@@ -3,8 +3,8 @@
 #This script must contain the code for catch, validate and apply the patches
 #sent by the user
 #Please make sure that the $uploadDir directory exists
-#
 #This files are not validated on this release, please be careful what you upload
+
 
 $uploadDir = '/var/www/html/uploads/';
 $userDir = '';

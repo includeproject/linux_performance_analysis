@@ -1,3 +1,14 @@
+<?php
+     /* Empezamos la sesión */
+     session_start();
+     /* Creamos la sesión */
+    $_SESSION['username'] = $_POST['username'];
+    $pass = $_POST['pass'];
+     /* Si no hay una sesión creada, redireccionar al index. */
+     if(empty($_SESSION['username']) && empty($pass)){ // Recuerda usar corchetes.
+        header('Location: login.php');
+     }
+?>
 <!DOCTYPE html>
 <html class="no-js">
 
@@ -19,6 +30,22 @@
                         <span class="icon-bar"></span>
                     </a>
                     <a class="brand" href="#">Linux Performance Analysis</a>
+                    <ul class="nav pull-right">
+                        <li class="dropdown">
+                            <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> 
+                                <i class="icon-user"></i><?=$_SESSION['username'];?> <i class="caret"></i>
+                            </a>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a tabindex="-1" href="#">Profile</a>
+                                </li>
+                                <li class="divider"></li>
+                                <li>
+                                    <a tabindex="-1" href="login.php">Logout</a>
+                                </li>
+                            </ul>
+                        </li>
+                    </ul>
                 </div>
             </div>
         </div>
@@ -62,16 +89,14 @@
                                     </tbody>
                                 </table>
                             </div>
-
                         </div>
+                        <button class="btn btn-medium btn-success" type="submit" value="Crear sesión" onclick="location.href='applying_patches.php' ;">Apply</button>
                     </div>
                     <div class="span4 column">
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left">Users</div>
-                                <div class="pull-right"><span class="badge badge-info">1,234</span>
-
-                                </div>
+                                <div class="pull-right"><span class="badge badge-info">1,234</span></div>
                             </div>
                             <div class="block-content collapse in">
 

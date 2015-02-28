@@ -16,7 +16,8 @@ PRIMARY KEY (`id_user`)
 CREATE TABLE patch (
 `id_patch` int(11) NOT NULL AUTO_INCREMENT COMMENT 'id of the patch',
 `name` varchar(45) NOT NULL COMMENT 'The name of the patch',
-`status` varchar(15) NOT NULL COMMENT 'Accepted|Rejected|Tested',
+`upload_date` varchar(45) NOT NULL COMMENT 'The date that the patch was uploaded',
+`status` varchar(15) NOT NULL COMMENT 'Rejected|Tested|Standby',
 `id_user` int(11) NOT NULL COMMENT 'Owner of the patch',
 PRIMARY KEY (id_patch),
 FOREIGN KEY (id_user) REFERENCES user(id_user)

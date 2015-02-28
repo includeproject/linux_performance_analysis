@@ -7,8 +7,6 @@ include_once "conexion.php";
       echo mysql_error(); 
   }
   else {    
-    
-       
       if (isset($_POST['login_user'])){
           $user = $_POST['username'];
           $pass = $_POST['pass'];
@@ -16,13 +14,11 @@ include_once "conexion.php";
           if(empty($user) && empty($pass)){
             header("location: ../pages/login.php");
           }else{
-            //Si la cuenta existe, direccionar a user_panel.php
             if(verify_account($user,$pass,$result) == 1){
               $_SESSION['username'] = $user; 
               $_SESSION['pass'] = $pass;
               header("location: ../pages/user_panel.php");
             }
-            //Sino direccionar a user_register.php, registro
             else{
               header("location: ../pages/user_register.php");
             }
@@ -37,10 +33,10 @@ include_once "conexion.php";
         $passconf = $_POST['passconfirm'];
 
         if($pass == $passconf){
-          if(verify_account($user,$pass,$result) == 0){//No existe la cuenta
+          if(verify_account($user,$pass,$result) == 0){
               if(create_register($firstname, $lastname, $user, $email,$pass,$result) == 1){ 
                 $_SESSION['username'] = $_POST['username']; 
-                $_SESSION['pass'] = $_POST['password']; 
+                $_SESSION['pass'] = $_POST['password'];
                 header("location:../pages/user_panel.php"); 
               }else{
                 $_SESSION['alert'] ="Can't create account";
@@ -73,9 +69,10 @@ include_once "conexion.php";
     } 
 
     function create_register($firstname, $lastname,$user,$email,$password,&$result) { 
-        $host_dir = $_SERVER['DOCUMENT_ROOT']."/upload/".$user;
+        $host_dir = $_SERVER['DOCUMENT_ROOT']."/uploads/".$user;
         $sql = "INSERT INTO user VALUES (0,'$user','$password','$firstname',
                   '$lastname','$email','$host_dir','1','2')"; 
+        shell_exec('mkdir -p '. $host_dir);
         $rslt = mysql_query($sql); 
         if($rslt){
           return 1;

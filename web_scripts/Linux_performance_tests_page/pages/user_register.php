@@ -1,12 +1,6 @@
 <?php
-session_start(); 
-// al volver al index si existe una session, esta sera destruida, existen formas de conservarlas como con un if(session_start()!= NULL). Pero por el momento para el ejemplo no es valido. 
-session_unset();
- 
-session_destroy(); 
-// Se destruye la session existente de esta forma no permite el duplicado.
-//echo $_SERVER('DOCUMENT_ROOT').'/upload/user';
- 
+session_start();
+$alert = $_SESSION['alert'];
  ?>
 <!DOCTYPE html>
 
@@ -27,16 +21,20 @@ session_destroy();
     <div class="container">
       <form class="form-signin" action="../scripts/verify_account.php" method="POST">
         <h2 class="form-signin-heading">Create Account</h2>
-        <input type="text" class="input-block-level" placeholder="First Name" name="user_first_name">
-        <input type="text" class="input-block-level" placeholder="Last Name" name="user_last_name">
-        <input type="text" class="input-block-level" placeholder="User Name" name="username">
-        <input type="text" class="input-block-level" placeholder="Email address" name="emailaddress">
-        <input type="password" class="input-block-level" placeholder="Password" name="pass">
-        <input type="password" class="input-block-level" placeholder="Password Confirm" name="passconfirm">
+        <input type="text" class="input-block-level" placeholder="First Name" name="user_first_name" value="">
+        <input type="text" class="input-block-level" placeholder="Last Name" name="user_last_name" value="">
+        <input type="text" class="input-block-level" placeholder="User Name" name="username" value="">
+        <input type="text" class="input-block-level" placeholder="Email address" name="emailaddress" value="">
+        <input type="password" class="input-block-level" placeholder="Password" name="pass" value="">
+        <input type="password" class="input-block-level" placeholder="Password Confirm" name="passconfirm" value="">
+        <div style="color:#FF0000">
+           <?php echo $alert ?>
+        </div>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>
-        <button name="register" class="btn btn-large btn-success" type="submit" value="Crear sesión">Create account</button>
+        <button class="btn btn-large btn-success" name="register" type="submit" value="rgst">Create account</button>
+        
       </form>
 
     </div> <!-- /container -->

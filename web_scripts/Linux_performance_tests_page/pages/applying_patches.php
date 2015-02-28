@@ -48,7 +48,7 @@ if (empty($_SESSION['username'])) {
             <?php include './../scripts/nav-bar.php'; ?>
             <div class="span9" id="content">
                 <div class="row-fluid">
-                    <form method="post" role="form" action="./../scripts/apply_patch.php" enctype="multipart/form-data">
+                    <form method="post" role="form" action="./../scripts/upload_patch.php" enctype="multipart/form-data">
                         <div class="jumbodtron">
                             <h1>
                                 Upload your patches to analyze!

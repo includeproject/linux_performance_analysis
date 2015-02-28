@@ -57,7 +57,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) { // Recuerda usar
                                 <div class="muted pull-left">Uploaded patches</div>
                                 <div class="pull-right">
                                     <span class="badge badge-info"
-                                          ><?php echo count(glob($_SERVER['DOCUMENT_ROOT']."/uploads/".$_SESSION['username']."/{*}",GLOB_BRACE));?>
+                                          ><?php echo count(glob($_SERVER['DOCUMENT_ROOT'] . "/uploads/" . $_SESSION['username'] . "/{*}", GLOB_BRACE)); ?>
                                     </span>
 
                                 </div>
@@ -91,17 +91,17 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) { // Recuerda usar
                                         $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
                                         $i = 0;
                                         while ($it->valid()) {
-                                            
-                                            if (!$it->isDot()) {
+
+                                            if (!$it->isDot() && $i > 0) {
                                                 echo '<tr>';
-                                                echo '<td>' . $i++ . '</td>';
+                                                echo '<td>' . $i . '</td>';
                                                 echo '<td> ' . $it->getSubPathName() . "</td>";
                                                 echo '<td>' . 'make a query' . "</td>";
                                                 echo "<td>Standby</td>";
-                                                echo '<td> <button type="button" class="btn btn-warning btn-small">Test</button></td>';
+                                                echo '<td> <button id="' . $it->getSubPathName() . '" type="button" class="btn btn-warning btn-small test">Test</button></td>';
                                                 echo '</tr>';
                                             }
-
+                                            $i++;
                                             $it->next();
                                         }
                                         ?>
@@ -135,6 +135,24 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) { // Recuerda usar
     <script src="../vendors/jquery-1.9.1.min.js"></script>
     <script src="../bootstrap/js/bootstrap.min.js"></script>
     <script src="../assets/scripts.js"></script>
+    <script>
+                            $(".test").onClick(function () {
+                                var patchName = $(this).attr('id');
+                                $.ajax({
+                                    url: "./../scripts/fio.php",
+                                    method: 'post',
+                                    data: {
+                                        path: patchName
+                                    }
+                                }).done(function (data) {
+                                    $('#wait_modal').modal('hide');
+                                    $("#results_section").html('<pre>' + data + '</pre>');
+                                }).fail(function (error) {
+                                    alert('Failed: ' + error);
+                                    $('#wait_modal').modal('hide');
+                                });
+                            });
+    </script>
 </body>
 
 </html>

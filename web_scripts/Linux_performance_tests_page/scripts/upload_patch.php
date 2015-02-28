@@ -27,3 +27,4 @@ if ($_FILES['files']['name'] && $_FILES['files']['error']) {
         ++$i;
     }
 }
+    header('Location: user_panel.php');

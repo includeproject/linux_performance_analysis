@@ -11,6 +11,7 @@
 <html class="no-js">
 
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Linux Analysis Performance</title>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">

@@ -1,17 +1,18 @@
 <?php
 session_start(); 
-session_unset();
-session_destroy(); 
-include_once "conexion.php";
 
+include_once "conexion.php";
+  $_SESSION['alert'] ="";
   if (!mysql_select_db(DB_NAME)) {
       echo mysql_error(); 
   }
-  else {
-    if (!isset($_SESSION['username'])){
-      if (isset($_POST['login']){
+  else {    
+    
+       
+      if (isset($_POST['login_user'])){
           $user = $_POST['username'];
           $pass = $_POST['pass'];
+          echo "user ".$user." pass ".$pass;
           if(empty($user) && empty($pass)){
             header("location: ../pages/login.php");
           }else{
@@ -26,27 +27,38 @@ include_once "conexion.php";
               header("location: ../pages/user_register.php");
             }
           }
-      }  
-      else if (isset($_POST['register'])) {  
-        if($_POST['pass'] == $POST['passconfirm']){
-          if(verify_account($_POST['user'],$_POST['password'],$result) == 0){//No existe la cuenta
-              if(create_register($_POST['user_first_name'],
-                                 $_POST['user_last_name'],
-                                 $_POST['username'],
-                                 $_POST['emailaddress'],
-                                 $_POST['pass'],
-                                 $result) == 1){ 
+      }
+      if (isset($_POST['register'])) {  
+        $firstname = $_POST['user_first_name'];
+        $lastname= $_POST['user_last_name'];
+        $user = $_POST['username'];
+        $email = $_POST['emailaddress'];
+        $pass = $_POST['pass'];
+        $passconf = $_POST['passconfirm'];
+
+        if($pass == $passconf){
+          if(verify_account($user,$pass,$result) == 0){//No existe la cuenta
+              if(create_register($firstname, $lastname, $user, $email,$pass,$result) == 1){ 
                 $_SESSION['username'] = $_POST['username']; 
                 $_SESSION['pass'] = $_POST['password']; 
                 header("location:../pages/user_panel.php"); 
+              }else{
+                $_SESSION['alert'] ="Can't create account";
+                header("location:../pages/user_register.php"); 
               }
           } 
+          else{
+            $_SESSION['alert'] ="Account invalid";
+            header("location:../pages/user_register.php"); 
+          }
         } else{ 
+            $_SESSION['alert'] ="Confirm password";
             header("location:../pages/user_register.php"); 
         }   
-      }
+      }  
+
     }
-  }
+  
 
   function verify_account($user,$password,&$result) { 
         $sql = "SELECT * FROM user WHERE user = '$user' and password = '$password'"; 
@@ -57,11 +69,7 @@ include_once "conexion.php";
             $count++; 
             $result = $row; 
         }   
-        if($count == 1){ 
-            return 1; 
-        } else{ 
-            return 0; 
-        } 
+        return $count;
     } 
 
     function create_register($firstname, $lastname,$user,$email,$password,&$result) { 

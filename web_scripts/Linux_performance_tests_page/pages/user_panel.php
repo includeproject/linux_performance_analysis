@@ -38,7 +38,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) { // Recuerda usar
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a tabindex="-1" href="login.php">Logout</a>
+                                    <a tabindex="-1" href="./../scripts/session_destroy.php">Logout</a>
                                 </li>
                             </ul>
                         </li>
@@ -55,7 +55,10 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) { // Recuerda usar
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left">Uploaded patches</div>
-                                <div class="pull-right"><span class="badge badge-info">0</span>
+                                <div class="pull-right">
+                                    <span class="badge badge-info"
+                                          ><?php echo count(glob($_SERVER['DOCUMENT_ROOT']."/uploads/".$_SESSION['username']."/{*}",GLOB_BRACE));?>
+                                    </span>
 
                                 </div>
                             </div>
@@ -82,26 +85,29 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) { // Recuerda usar
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        <?php
+                                        $directory = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $_SESSION['username'] . '/';
 
+                                        $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+                                        $i = 0;
+                                        while ($it->valid()) {
+                                            
+                                            if (!$it->isDot()) {
+                                                echo '<tr>';
+                                                echo '<td>' . $i++ . '</td>';
+                                                echo '<td> ' . $it->getSubPathName() . "</td>";
+                                                echo '<td>' . 'make a query' . "</td>";
+                                                echo "<td>Standby</td>";
+                                                echo '<td> <button type="button" class="btn btn-warning btn-small">Test</button></td>';
+                                                echo '</tr>';
+                                            }
+
+                                            $it->next();
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
-                                <?php
-                                $directory = $_SERVER['DOCUMENT_ROOT'].'/uploads/'.$_SESSION['username'].'/';
 
-                                $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
-
-                                while ($it->valid()) {
-
-                                    if (!$it->isDot()) {
-
-                                        echo 'SubPathName: ' . $it->getSubPathName() . "\n";
-                                        echo 'SubPath:     ' . $it->getSubPath() . "\n";
-                                        echo 'Key:         ' . $it->key() . "\n\n";
-                                    }
-
-                                    $it->next();
-                                }
-                                ?>
                             </div>
                         </div>
                         <button class="btn btn-medium btn-primary" type="submit" value="Crear sesión" onclick="location.href = 'applying_patches.php';">Upload</button>

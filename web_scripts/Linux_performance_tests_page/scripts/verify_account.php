@@ -1,7 +1,9 @@
 <?php
+header('Content-Type: text/html; charset=UTF-8'); 
 session_start(); 
 
 include_once "conexion.php";
+
   $_SESSION['alert'] ="";
   if (!mysql_select_db(DB_NAME)) {
       echo mysql_error(); 
@@ -10,51 +12,69 @@ include_once "conexion.php";
     
        
       if (isset($_POST['login_user'])){
-          $user = $_POST['username'];
-          $pass = $_POST['pass'];
-          echo "user ".$user." pass ".$pass;
+          // Escape single quotes.->  addslashes
+          $user = addslashes($_POST['username']);
+          $pass = addslashes($_POST['pass']);
+    
           if(empty($user) && empty($pass)){
             header("location: ../pages/login.php");
           }else{
-            //Si la cuenta existe, direccionar a user_panel.php
+            //If the account exists, address to the user_panel.php
             if(verify_account($user,$pass,$result) == 1){
               $_SESSION['username'] = $user; 
               $_SESSION['pass'] = $pass;
               header("location: ../pages/user_panel.php");
             }
-            //Sino direccionar a user_register.php, registro
+            //Else address to user_register.php, Register
             else{
               header("location: ../pages/user_register.php");
             }
           }
       }
-      if (isset($_POST['register'])) {  
-        $firstname = $_POST['user_first_name'];
-        $lastname= $_POST['user_last_name'];
-        $user = $_POST['username'];
-        $email = $_POST['emailaddress'];
-        $pass = $_POST['pass'];
-        $passconf = $_POST['passconfirm'];
-
-        if($pass == $passconf){
-          if(verify_account($user,$pass,$result) == 0){//No existe la cuenta
-              if(create_register($firstname, $lastname, $user, $email,$pass,$result) == 1){ 
-                $_SESSION['username'] = $_POST['username']; 
-                $_SESSION['pass'] = $_POST['password']; 
-                header("location:../pages/user_panel.php"); 
-              }else{
-                $_SESSION['alert'] ="Can't create account";
+      if (isset($_POST['register'])) { 
+        // Escape single quotes.->  addslashes
+        $firstname = addslashes($_POST['user_first_name']);
+        $lastname= addslashes($_POST['user_last_name']);
+        $user = addslashes($_POST['username']);
+        $email = addslashes($_POST['emailaddress']);
+        $pass = addslashes($_POST['pass']);
+        $passconf = addslashes($_POST['passconfirm']);
+        $bool = 0;
+        if(empty($firstname) || empty($lastname) || empty($user) || empty($email) || empty($pass) || empty($passconf)){
+          $bool = 1;
+        }
+        if($bool == 0){
+          if(!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email)){
+              $bool = -1;
+              $_SESSION['alert'] ="Email address invalid";
+              header("location:../pages/user_register.php"); 
+          }
+          else{
+            if($pass == $passconf){
+              if(verify_account($user,$pass,$result) == 0){//Account doesn't exist
+                  if(create_register($firstname, $lastname, $user, $email,$pass,$result) == 1){ 
+                    $_SESSION['username'] = $_POST['username']; 
+                    $_SESSION['pass'] = $_POST['password']; 
+                    header("location:../pages/user_panel.php"); 
+                  }else{
+                    $_SESSION['alert'] ="Can't create account";
+                    header("location:../pages/user_register.php"); 
+                  }
+              } 
+              else{
+                $_SESSION['alert'] ="Account invalid";
                 header("location:../pages/user_register.php"); 
               }
-          } 
-          else{
-            $_SESSION['alert'] ="Account invalid";
+            } else{ 
+                $_SESSION['alert'] ="Confirm password";
+                header("location:../pages/user_register.php"); 
+            }
+          }   
+        }
+        else{
+            $_SESSION['alert'] ="Obligatory information *";
             header("location:../pages/user_register.php"); 
-          }
-        } else{ 
-            $_SESSION['alert'] ="Confirm password";
-            header("location:../pages/user_register.php"); 
-        }   
+        }
       }  
 
     }

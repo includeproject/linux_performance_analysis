@@ -52,6 +52,7 @@ compileLtp() {
 compileLinuxKernel() {
 	directory=$1
 	cd $directory
+	git checkout -b v3.19 v3.19
 	yes "" | make oldconfig
 	sudo make prepare
 	make -j3

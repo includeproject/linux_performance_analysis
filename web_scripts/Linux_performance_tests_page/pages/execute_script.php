@@ -1,10 +1,10 @@
 <?php
-     /* Empezamos la sesión */
-     session_start();
-     /* Si no hay una sesión creada, redireccionar al index. */
-     if(empty($_SESSION['username'])) { // Recuerda usar corchetes.
-        header('Location: login.php');
-     }
+/* Empezamos la sesión */
+session_start();
+/* Si no hay una sesión creada, redireccionar al index. */
+if (empty($_SESSION['username'])) { // Recuerda usar corchetes.
+    header('Location: login.php');
+}
 ?>
 <!DOCTYPE html>
 <html class="no-js">
@@ -45,7 +45,7 @@
                     <ul class="nav pull-right">
                         <li class="dropdown">
                             <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> 
-                                <i class="icon-user"></i><?=$_SESSION['username'];?> <i class="caret"></i>
+                                <i class="icon-user"></i><?= $_SESSION['username']; ?> <i class="caret"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -177,10 +177,10 @@
             </div>
             <hr>
         </div>
-        <script src="../vendors/jquery-1.9.1.min.js"></script>
-        <script src="../bootstrap/js/bootstrap.min.js"></script>
-        <script src="../vendors/easypiechart/jquery.easy-pie-chart.js"></script>
-        <script src="../assets/scripts.js"></script>
+        <script src="./../vendors/jquery-1.9.1.min.js"></script>
+        <script src="./../bootstrap/js/bootstrap.min.js"></script>
+        <script src="./../vendors/easypiechart/jquery.easy-pie-chart.js"></script>
+        <script src="./../assets/scripts.js"></script>
         <script>
             $(function () {
                 $('.chart').easyPieChart({animate: 1000});
@@ -221,30 +221,37 @@
             $("#execute_ltp_ver_linux").click(function () {
                 $('#wait_modal').modal('show');
                 $.ajax({
-                    url: "./scripts/ltp.php"
+                    url: "./../scripts/ltp.php"
                 }).done(function (data) {
                     $("#results_section").html('<pre>' + data + '</pre>');
                     $('#wait_modal').modal('hide');
-                }).fail(function () {
-                    alert('Failed');
+                }).fail(function (error) {
+                    alert('Failed: '+error);
+                    $('#wait_modal').modal('hide');
                 });
             });
             $("#execute_powertop_csv").click(function () {
                 $('#wait_modal').modal('show');
                 $.ajax({
-                    url: "./scripts/powertop.php"
+                    url: "./../scripts/powertop.php"
                 }).done(function (data) {
                     $('#wait_modal').modal('hide');
                     $("#results_section").html('<pre>' + data + '</pre>');
+                }).fail(function (error) {
+                    alert('Failed: '+error);
+                    $('#wait_modal').modal('hide');
                 });
             });
             $("#execute_fio_cpuclock_test").click(function () {
                 $('#wait_modal').modal('show');
                 $.ajax({
-                    url: "./scripts/fio.php"
+                    url: "./../scripts/fio.php"
                 }).done(function (data) {
                     $('#wait_modal').modal('hide');
                     $("#results_section").html('<pre>' + data + '</pre>');
+                }).fail(function (error) {
+                    alert('Failed: '+error);
+                    $('#wait_modal').modal('hide');
                 });
             });
         </script>

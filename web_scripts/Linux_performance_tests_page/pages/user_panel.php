@@ -1,11 +1,13 @@
 <?php
-     /* Empezamos la sesión */
-     session_start();
-    
-     /* Si no hay una sesión creada, redireccionar al index. */
-     if(empty($_SESSION['username']) && empty($_SESSION['pass'])){ // Recuerda usar corchetes.
-        header('Location: login.php');
-     }
+/* Empezamos la sesión */
+session_start();
+
+/* Si no hay una sesión creada, redireccionar al index. */
+
+if (empty($_SESSION['username']) && empty($_SESSION['pass'])) {
+    header('location: login.php');
+
+}
 ?>
 <!DOCTYPE html>
 <html class="no-js">
@@ -15,7 +17,6 @@
         <title>Linux Analysis Performance</title>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-        <!--<link href="../vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">-->
         <link href="../assets/styles.css" rel="stylesheet" media="screen">
         <script src="../vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
@@ -32,7 +33,7 @@
                     <ul class="nav pull-right">
                         <li class="dropdown">
                             <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> 
-                                <i class="icon-user"></i><?=$_SESSION['username'];?> <i class="caret"></i>
+                                <i class="icon-user"></i><?= $_SESSION['username']; ?> <i class="caret"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -40,7 +41,7 @@
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a tabindex="-1" href="login.php">Logout</a>
+                                    <a tabindex="-1" href="./../scripts/session_destroy.php">Logout</a>
                                 </li>
                             </ul>
                         </li>
@@ -57,7 +58,10 @@
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
                                 <div class="muted pull-left">Uploaded patches</div>
-                                <div class="pull-right"><span class="badge badge-info">0</span>
+                                <div class="pull-right">
+                                    <span class="badge badge-info"
+                                          ><?php echo count(glob($_SERVER['DOCUMENT_ROOT']."/uploads/".$_SESSION['username']."/{*}",GLOB_BRACE));?>
+                                    </span>
 
                                 </div>
                             </div>
@@ -84,18 +88,38 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        
+                                        <?php
+                                        $directory = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $_SESSION['username'] . '/';
+
+                                        $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
+                                        $i = 0;
+                                        while ($it->valid()) {
+                                            
+                                            if (!$it->isDot()) {
+                                                echo '<tr>';
+                                                echo '<td>' . $i++ . '</td>';
+                                                echo '<td> ' . $it->getSubPathName() . "</td>";
+                                                echo '<td>' . 'make a query' . "</td>";
+                                                echo "<td>Standby</td>";
+                                                echo '<td> <button type="button" class="btn btn-warning btn-small">Test</button></td>';
+                                                echo '</tr>';
+                                            }
+
+                                            $it->next();
+                                        }
+                                        ?>
                                     </tbody>
                                 </table>
+
                             </div>
                         </div>
-                        <button class="btn btn-medium btn-success" type="submit" value="Crear sesión" onclick="location.href='applying_patches.php' ;">Apply</button>
+                        <button class="btn btn-medium btn-primary" type="submit" value="Crear sesión" onclick="location.href = 'applying_patches.php';">Upload</button>
                     </div>
                     <div class="span4 column">
                         <div class="block">
                             <div class="navbar navbar-inner block-header">
-                                <div class="muted pull-left">Users</div>
-                                <div class="pull-right"><span class="badge badge-info">1,234</span></div>
+                                <div class="muted pull-left">News</div>
+                                <div class="pull-right"><span class="badge badge-info">0</span></div>
                             </div>
                             <div class="block-content collapse in">
 

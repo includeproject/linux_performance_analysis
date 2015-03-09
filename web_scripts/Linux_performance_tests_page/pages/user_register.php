@@ -1,7 +1,9 @@
 <?php
 session_start();
 $alert = $_SESSION['alert'];
-
+if (isset($_SESSION['username']) || isset($_SESSION['id_user'])){
+  header("location: user_panel.php");
+}
  ?>
 <!DOCTYPE html>
 

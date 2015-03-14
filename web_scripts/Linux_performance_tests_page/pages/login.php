@@ -2,11 +2,16 @@
  session_start(); 
 // al volver al index si existe una session, esta sera destruida, existen formas de conservarlas como con un if(session_start()!= NULL). Pero por el momento para el ejemplo no es valido. 
 
+//Sesion activa, redireccionar al panel
+if (isset($_SESSION['username']) || isset($_SESSION['id_user'])){
+  header("location: user_panel.php");
+}
  ?>
 <!DOCTYPE html>
 
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Admin Login</title>
     <!-- Bootstrap -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -20,7 +25,7 @@
 
       <form class="form-signin" action="../scripts/verify_account.php" method="POST">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="input-block-level" placeholder="User name or Email address" name="username">
+        <input type="text" class="input-block-level" placeholder="User name" name="username">
         <input type="password" class="input-block-level" placeholder="Password" name="pass">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me

@@ -1,16 +1,15 @@
 <?php
-/* Empezamos la sesión */
 session_start();
 
-/* Si no hay una sesión creada, redireccionar al index. */
-if (empty($_SESSION['username']) && empty($_SESSION['pass'])) { // Recuerda usar corchetes.
-    header('Location: login.php');
+if (empty($_SESSION['username']) && empty($_SESSION['pass'])) {
+    header('location: login.php');
 }
 ?>
 <!DOCTYPE html>
 <html class="no-js">
 
     <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
         <title>Linux Analysis Performance</title>
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
@@ -154,5 +153,4 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) { // Recuerda usar
                             });
     </script>
 </body>
-
 </html>

@@ -1,11 +1,15 @@
 <?php
 session_start();
 $alert = $_SESSION['alert'];
+if (isset($_SESSION['username']) || isset($_SESSION['id_user'])){
+  header("location: user_panel.php");
+}
  ?>
 <!DOCTYPE html>
 
 <html>
   <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     <title>Register Account</title>
     <!-- Bootstrap -->
     <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
@@ -21,11 +25,11 @@ $alert = $_SESSION['alert'];
     <div class="container">
       <form class="form-signin" action="../scripts/verify_account.php" method="POST">
         <h2 class="form-signin-heading">Create Account</h2>
-        <input type="text" class="input-block-level" placeholder="First Name" name="user_first_name" value="">
-        <input type="text" class="input-block-level" placeholder="Last Name" name="user_last_name" value="">
-        <input type="text" class="input-block-level" placeholder="User Name" name="username" value="">
-        <input type="text" class="input-block-level" placeholder="Email address" name="emailaddress" value="">
-        <input type="password" class="input-block-level" placeholder="Password" name="pass" value="">
+        <input type="text" class="input-block-level" placeholder="First Name *" name="user_first_name" value="">
+        <input type="text" class="input-block-level" placeholder="Last Name *" name="user_last_name" value="">
+        <input type="text" class="input-block-level" placeholder="User Name *" name="username" value="">
+        <input type="text" class="input-block-level" placeholder="Email address *" name="emailaddress" value="">
+        <input type="password" class="input-block-level" placeholder="Password *" name="pass" value="">
         <input type="password" class="input-block-level" placeholder="Password Confirm" name="passconfirm" value="">
         <div style="color:#FF0000">
            <?php echo $alert ?>

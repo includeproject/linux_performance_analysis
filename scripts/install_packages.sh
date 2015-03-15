@@ -57,8 +57,13 @@ export powertopPath="https://01.org/sites/default/files/downloads/"$powertopName
 # =============================================================================
 
 aptGet() {
-	su root -c "$aptGetName update"
-	su root -c "$aptGetName install $aptGetPackages"
+	sudo $aptGetName update
+	sudo $aptGetName install $aptGetPackages
+}
+
+yum(){
+    sudo yum update
+    sudo yum install $1 $aptGetPackages
 }
 
 tarBall() {
@@ -91,10 +96,14 @@ tarBallAll() {
 # Script Main
 # =============================================================================
 
-if apt-get > /dev/null; then
-	aptGet
+if type apt-get &>/dev/null; then
+        aptGet
+elif type yum &>/dev/null; then
+        yum -y
 else
 	tarBallAll
+
 fi
+
 
 # End of File

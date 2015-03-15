@@ -15,7 +15,7 @@ echo '
                             <a href="http://' . $path . '/pages/execute_script.php"><i class="icon-chevron-right"></i> Perform tests</a>
                         </li>
                         <li class="">
-                            <a href="http://' . $path . '/pages/applying_patches.php"><i class="icon-chevron-right"></i> Upload a patch</a>
+                            <a href="http://' . $path . '/pages/upload_patches.php"><i class="icon-chevron-right"></i> Upload a patch</a>
                         </li>
                         <li class="">
                             <a href="http://' . $path . '/pages/about.php"><i class="icon-chevron-right"></i> About</a>

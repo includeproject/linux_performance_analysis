@@ -109,7 +109,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) {
 
                             </div>
                         </div>
-                        <button class="btn btn-medium btn-primary" type="submit" value="Crear sesión" onclick="location.href = 'applying_patches.php';">Upload</button>
+                        <button class="btn btn-medium btn-primary" type="submit" value="Crear sesión" onclick="location.href = 'upload_patches.php';">Upload</button>
                     </div>
                     <div class="span4 column">
                         <div class="block">

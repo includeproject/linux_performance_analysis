@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -x
+#set -x
 
 # =============================================================================
 # Scripts Variables
@@ -11,7 +11,7 @@ export directoryScripts=$directoryRoot/scripts/
 export directorySource=$directoryRoot/source/
 
 export aptGetName=apt-get
-export aptGetPackages="autoconf automake bison byacc flex m4 make"
+export aptGetPackages="autoconf automake bison byacc flex m4 make powertop"
 
 export autoconfName=autoconf
 export autoconfVersion="2.61"
@@ -47,16 +47,27 @@ export makeVersion="3.81"
 export makePackage=$makeName"-"$makeVersion".tar.bz2"
 export makePath="http://ftp.gnu.org/gnu/"$makeName"/"$makePackage
 
+export powertopName=powertop
+export powertopVersion="2.7"
+export powertopPackage=$powertopName"-"$powertopVersion"tar.gz"
+export powertopPath="https://01.org/sites/default/files/downloads/"$powertopName"/"$powertopPackage
+
 # =============================================================================
 # Script Functions
 # =============================================================================
 
 aptGet() {
-	su root -c "$aptGetName update"
-	su root -c "$aptGetName install $aptGetPackages"
+	sudo $aptGetName update
+	sudo $aptGetName install $aptGetPackages
+}
+
+yum(){
+    sudo yum update
+    sudo yum install $1 $aptGetPackages
 }
 
 tarBall() {
+    
 	name=$1
 	version=$2
 	package=$3
@@ -78,16 +89,21 @@ tarBallAll() {
 	tarBall $flexName     $flexVersion     $flexPackage     $flexPath
 	tarBall $m4Name       $m4Version       $m4Package       $m4Path
 	tarBall $makeName     $makeVersion     $makePackage     $makePath
+	tarBall $powertopName $powertopVersion $powertopPackage $powertopPath
 }
 
 # =============================================================================
 # Script Main
 # =============================================================================
 
-if apt-get > /dev/null; then
-	aptGet
+if type apt-get &>/dev/null; then
+        aptGet
+elif type yum &>/dev/null; then
+        yum -y
 else
 	tarBallAll
+
 fi
+
 
 # End of File

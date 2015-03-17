@@ -2,6 +2,10 @@
  session_start(); 
 // al volver al index si existe una session, esta sera destruida, existen formas de conservarlas como con un if(session_start()!= NULL). Pero por el momento para el ejemplo no es valido. 
 
+//Sesion activa, redireccionar al panel
+if (isset($_SESSION['username']) || isset($_SESSION['id_user'])){
+  header("location: user_panel.php");
+}
  ?>
 <!DOCTYPE html>
 

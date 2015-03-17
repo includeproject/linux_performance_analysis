@@ -8,28 +8,42 @@ If you want to know the current kernel version on your host OS, please type on a
 ```uname -r```
 
 ##Prerrequisites
-You must have these libraries installed on your system
-- tar
+You must have these libraries and dependencies installed on your system
+- tar 
 - wget
 - make
 - gcc
+- gcc-c++
 - binutils
+- ncurses
+- ncurses-devel
 
-##Download the linux kernel
-Downlad the kernel version you want to install from the [Kernel](https://www.kernel.org/) main page.
-
-The kernel comes as a 20 to 50 MB tar.xz file. It will decompress to about 200 MB and during the later compilation you will need additional space.
-
-####This is an example.
+## Download the kernel source
+Here you have two options to get the source
+##### 1. From Kernel.org
+You can get the source code from [kernel.org](https://www.kernel.org/). For example for the v3.19.1 stable release.
 ```sh
-wget http://www.kernel.org/pub/linux/kernel/v2.4/linux-2.4.19.tar.gz
-tar Jxvf linux-3.18.5.tar.xz
-cd linux-3.18.6
+$ wget -c https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.1.tar.xz
+$ tar -xJf linux-3.19.1.tar.xz
+$ cd linux-3.19.1
+```
+The kernel comes as a 20 to 50 MB tar.xz file depending of the version. It will decompress to about 200 MB and during the later compilation you will need additional space.
+##### 2. From git tags
+In the other hand you can get the source from git and select the latest stable tag. Following the example for v3.19.1
+```sh
+$ git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
+$ cd linux-stable
+$ git checkout -b stable v3.19.1
+```
+
+You can check all the stable tags available with:
+```
+$ git tag -l | less
 ```
 
 ##Configure the kernel options
 
-Change to the linux directory. You'll now need to configure the kernel to select the features you want or need. There are several ways to do this..
+Change to the linux kernel source directory. You'll now need to configure the kernel to select the features you want or need. There are several ways to do this..
 
 *. ```make config```
 * Command line questions.
@@ -37,8 +51,11 @@ Change to the linux directory. You'll now need to configure the kernel to select
 *. ```make oldconfig```
 * (Useful only if you kept a .config from a previous kernel build. With the newest kernels, the .config of the currently-running kernel is used by default if it's available, so you usually won't need this feature.)
 
+*. ```make silentoldconfig```
+* The same as oldconfig but without getting messages on the command line, excepting the errors.
+
 *. ```make menuconfig```
-* (ncurses based)
+* (ncurses required)
 
 *. ```make gconfig```
 * (GTK+ based X-Windows configuration)

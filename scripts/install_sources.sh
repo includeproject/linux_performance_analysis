@@ -1,6 +1,6 @@
 #!/bin/sh
 
-set -x
+#set -x
 
 # =============================================================================
 # Scripts Variables
@@ -34,7 +34,7 @@ compileCommon() {
 	make distclean
 	./configure
 	make
-	#su root -c "make install"
+	sudo make install
 	cd ../
 }
 
@@ -45,17 +45,20 @@ compileLtp() {
 	make autotools
 	./configure
 	make all
-	#su root -c "make install"
+	sudo make install
 	cd ../
 }
 
 compileLinuxKernel() {
 	directory=$1
 	cd $directory
-	make oldconfig
+	git checkout -b v3.19 v3.19
+	yes "" | make oldconfig
+	sudo make prepare
 	make -j3
-	#su root -c "make modules_install"
-	#su root -c "make install"
+	sudo make modules_install
+	sudo make headers_install
+	sudo make install
 	cd ../
 }
 
@@ -77,7 +80,7 @@ gitPull
 # Source Code Git Repositories Compilation #
 
 compileCommon "fio"
-#compileLtp "ltp"
+compileLtp "ltp"
 compileLinuxKernel "linux"
 
 cd $directoryRoot

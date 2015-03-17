@@ -5,8 +5,8 @@ To Do
 Number | Description | Expected result | Actual result | Status
 -------|------------|-----------------|---------------|-------
 1 | "Remember me" check box | The user will not be prompted to logging each time he opens the page | Do not have a function | Pending
-2 | User have an account already, wants to logging but fails to introduce the correct information | A message will pop out asking the user to enter the correct account or password | The user is prompted to create a new account | Pending
-3 | User log in correctly whit email account | Have access to his uploaded information | User can't check his uploaded information | Pending
+2 | User have an account already, wants to logging but fails to introduce the correct information | A message will pop out asking the user to enter the correct account or password | The user is prompted to create a new account | Correct
+3 | User log in correctly whit email account | Have access to his uploaded information | User can't check his uploaded information | Correct
 4 | User log in correctly whit user account  | Have access to his uploaded information | Have access to his uploaded information | Correct
 #####user_register.php
 Number | Description | Expected result | Actual result | Status

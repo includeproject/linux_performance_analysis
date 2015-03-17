@@ -6,8 +6,7 @@ $server_name = $_SERVER['SERVER_NAME'];
 $path = pathinfo($_SERVER['PHP_SELF']);
 $path = $path['dirname'];
 $path = $server_name . $path;
-$path = str_replace('pages', '', $path);
-
+$path = str_replace('/pages', '', $path);
 echo '
     <div class="span3" id="sidebar">
                     <ul class="nav nav-list bs-docs-sidenav nav-collapse collapse">

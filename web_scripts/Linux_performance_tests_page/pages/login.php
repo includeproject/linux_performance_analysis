@@ -6,6 +6,12 @@
 if (isset($_SESSION['username']) || isset($_SESSION['id_user'])){
   header("location: user_panel.php");
 }
+$alert = $_SESSION['alert'];
+//Delete session variables when load page loggin
+unset($_SESSION['firstname']);
+unset($_SESSION['lastname']);
+unset($_SESSION['user']);
+unset($_SESSION['email']);
  ?>
 <!DOCTYPE html>
 
@@ -25,8 +31,11 @@ if (isset($_SESSION['username']) || isset($_SESSION['id_user'])){
 
       <form class="form-signin" action="../scripts/verify_account.php" method="POST">
         <h2 class="form-signin-heading">Please sign in</h2>
-        <input type="text" class="input-block-level" placeholder="User name" name="username">
+        <input type="text" class="input-block-level" placeholder="User name or Email" name="username">
         <input type="password" class="input-block-level" placeholder="Password" name="pass">
+         <div style="color:#FF0000">
+           <?php echo $alert ?>
+        </div>
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me
         </label>

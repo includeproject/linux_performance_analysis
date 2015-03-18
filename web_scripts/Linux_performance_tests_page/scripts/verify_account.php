@@ -19,21 +19,21 @@ include_once "conexion.php";
           header("location: ../pages/login.php");
         }else{
           if(verify_account($user,$pass,$result) != 0){//Account exist
-            $_SESSION['id_user'] = $result;
-            $_SESSION['username'] = $user; 
+            $_SESSION['alert'] = "";
             header("location: ../pages/user_panel.php");
           }
           else{//Account doesn't exist
-            header("location: ../pages/user_register.php");
+            $_SESSION['alert'] = "Incorrect account or password";
+            header("location: ../pages/login.php");
           }
         }
     }
     if (isset($_POST['register'])) {
       // Escape single quotes.->  addslashes
-      $firstname = addslashes($_POST['user_first_name']);
-      $lastname = addslashes($_POST['user_last_name']);
-      $user = addslashes($_POST['username']);
-      $email = addslashes($_POST['emailaddress']);
+      $_SESSION['firstname'] = addslashes($_POST['user_first_name']);
+      $_SESSION['lastname'] = addslashes($_POST['user_last_name']);
+      $_SESSION['user'] = addslashes($_POST['username']);
+      $_SESSION['email'] = addslashes($_POST['emailaddress']);
       $pass = addslashes(md5($_POST['pass']));
       $passconf = addslashes(md5($_POST['passconfirm']));
       $bool = 0;
@@ -82,8 +82,12 @@ function verify_account($user, $password, &$result) {
     if($rec){
       $reg = mysql_fetch_row($rec);     
       $id = $reg[0];
-      if($id == "")
+      if($id == ""){
         $id = 0;
+      }else{
+        $_SESSION['id_user'] = $id;
+        $_SESSION['username'] = $reg[1]; 
+      }
     }
     return $id;
 

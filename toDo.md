@@ -11,7 +11,7 @@ Number | Description | Expected result | Actual result | Status
 #####user_register.php
 Number | Description | Expected result | Actual result | Status
 -------|------------|-----------------|---------------|-------
-1 | User fails to insert correct information on any field | A message will pop out explaining were is  the error and marking the incorrect field whit an asterisk | A message will pop out explaining were is the error but without marking it | Pending
+1 | User fails to insert correct information on any field | A message will pop out explaining were is  the error and marking the incorrect field whit an asterisk | A message will pop out explaining were is the error but without marking it | Correct
 2 | "Remember me" check box | The user will not be prompted to logging each time he opens the page | Do not have a function | Pending
 3 | User succeeds creating a new account | A new page will be open whit an open session | A new page will be open whit an open session | Correct
 #####user_panel.php

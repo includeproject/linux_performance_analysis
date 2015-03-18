@@ -218,6 +218,7 @@ body {
     position: relative;
     overflow: hidden;
     }
+    
     .btn-file input[type=file] {
     position: absolute;
     top: 0;

@@ -28,7 +28,7 @@ startJob () {
     jobsNames[$globalIndex]=$command
     $command > $name.log 2>&1 &
     jobsPIDs[$globalIndex]=$!
-    jobPIDs[&(expr $globalIndex + 1)]="non"
+    jobPIDs[$(expr $globalIndex + 1)]="non"
     
     globalIndex=$(expr $globalIndex + 1)
 }

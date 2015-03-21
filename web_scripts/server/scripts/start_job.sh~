@@ -6,10 +6,10 @@ set -x
 # Scripts Variables
 # =============================================================================
 
-export bufferPID="0000"
-export gitPID="0000"
-export fioPID="0000"
-export powertopPID="0000"
+export declare -a jobsPIDs
+export declare -a jobsNames
+export declare -i globalIndex=0
+export bufferName=""
 
 # =============================================================================
 # Script Functions
@@ -17,25 +17,19 @@ export powertopPID="0000"
 
 startJob () {
     command=$1
-    name=$2
-    
-    $command&
-    bufferPID=$!
 
-    if [ $name == "git" ]; then
-	gitPID=$bufferPID
-    fi
-    if [ $name == "fio" ];then
-	fioPID=$bufferPID
-    fi
-    if [ $name == "powertop" ];then
-	powertopPID=$bufferPID
-    fi
+    jobsNames[$globalIndex]=$command
+    $command > $name.log 2>&1 &
+    jobsPIDs[$globalIndex]=$!
+
+    globalIndex=$(expr $globalIndex + 1)
 }
+
+
 # =============================================================================
 # Script Main
 # =============================================================================
 
-startjob $1 $2
+startjob $1
 
 # End of File

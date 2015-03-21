@@ -6,10 +6,11 @@ set -x
 # Scripts Variables
 # =============================================================================
 
-export gitActive=1
-export fioActive=1
-export powertopActive=1
-export activeBuffer=1
+export declare -a jobsActive
+export arrayLimit="non"
+
+export false=1
+export true=0
 export secondsWaiting=15
 
 # =============================================================================
@@ -29,14 +30,16 @@ checkOnlineJob (){
 }
 
 checkOnlineAll (){
-    checkOnlineJob $gitPID
-    gitActive=$activeBuffer
-    
-    checkOnlineJob $fioPID
-    fioActive=$activeBuffer
+    declare -i index=0
 
-    checkOnlineJob $powertopPID
-    powertopActive=$activeBuffer
+    while[ ${jobsPIDs[$index]} != $arrayLimit ];do
+	if [ (jobs | grep ${jobPIDs[$index]}" Running") ]; then #Checks if the jobs is on the "jobs" list
+	    jobsActive[$index]=$true
+	else
+	    jobsActive[$index]=$false
+	fi
+	index=$(expr $index + 1 )
+    done	
 }
 
 

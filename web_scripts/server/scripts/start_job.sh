@@ -13,9 +13,10 @@ set -x
 # Scripts Variables
 # =============================================================================
 
-export declare -a jobsPIDs
-export declare -a jobsNames
-export declare -i globalIndex=0
+declare -i globalIndex
+export globalIndex
+declare -i firstIndex=0
+export firstIndex
 export bufferName=""
 
 # =============================================================================
@@ -33,11 +34,17 @@ startJob () {
     globalIndex=$(expr $globalIndex + 1)
 }
 
+initializeGlobalIndex (){
+    if [ ! ( $globalIndex -eq $firstIndex ) ]; then
+	globalIndex=0
+    fi
+}
 
 # =============================================================================
 # Script Main
 # =============================================================================
 
+initializeGlobalIndex
 startjob $1
 
 # End of File

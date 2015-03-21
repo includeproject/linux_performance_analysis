@@ -36,6 +36,10 @@ include_once "conexion.php";
       $_SESSION['email'] = addslashes($_POST['emailaddress']);
       $pass = addslashes(md5($_POST['pass']));
       $passconf = addslashes(md5($_POST['passconfirm']));
+      $firstname = $_SESSION['firstname'];
+      $lastname = $_SESSION['lastname'];
+      $user = $_SESSION['user'];
+      $email = $_SESSION['email'];
       $bool = 0;
       if (empty($firstname) || empty($lastname) || empty($user) || empty($email) || empty($pass) || empty($passconf)) {
           $bool = 1;

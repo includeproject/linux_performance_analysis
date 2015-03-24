@@ -1,7 +1,5 @@
 #!/bin/sh
 
-#set -x
-
 # =============================================================================
 # Scripts Variables
 # =============================================================================
@@ -11,7 +9,8 @@ export directoryScripts=$directoryRoot/scripts/
 export directorySource=$directoryRoot/source/
 
 export aptGetName=apt-get
-export aptGetPackages="autoconf automake bison byacc flex m4 make powertop"
+export yumName=yum
+export packagesList="autoconf automake bison byacc flex m4 make powertop"
 
 export autoconfName=autoconf
 export autoconfVersion="2.61"
@@ -58,16 +57,16 @@ export powertopPath="https://01.org/sites/default/files/downloads/"$powertopName
 
 aptGet() {
 	sudo $aptGetName update
-	sudo $aptGetName install $aptGetPackages
+	sudo $aptGetName install $packagesList
 }
 
 yum(){
-    sudo yum update
-    sudo yum install $1 $aptGetPackages
+    sudo $yumName update
+    sudo $yumName install $1 $packagesList
 }
 
 tarBall() {
-    
+
 	name=$1
 	version=$2
 	package=$3
@@ -97,13 +96,11 @@ tarBallAll() {
 # =============================================================================
 
 if type apt-get &>/dev/null; then
-        aptGet
+	aptGet
 elif type yum &>/dev/null; then
-        yum -y
+	yum -y
 else
 	tarBallAll
-
 fi
-
 
 # End of File

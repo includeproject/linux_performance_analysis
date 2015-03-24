@@ -1,7 +1,5 @@
 #!/bin/sh
 
-#set -x
-
 # =============================================================================
 # Scripts Variables
 # =============================================================================
@@ -14,14 +12,31 @@ export gitRepositoryLinuxKernel="https://git.kernel.org/pub/scm/linux/kernel/git
 export gitRepositoryFio="git://git.kernel.dk/fio.git"
 export gitRepositoryFioVisualizer="https://github.com/01org/fiovisualizer.git"
 
+export gitLocalLtp="ltp"
+export gitLocalLinuxKernel="linux"
+export gitLocalFio="fio"
+export gitLocalFioVisualizer="fiovisualizer"
+
 export packageGit=git
 
 # =============================================================================
 # Script Functions
 # =============================================================================
 
+checkLocal() {
+	repolocal=$1
+	test -d $repolocal
+}
+
 gitClone() {
-	$packageGit clone $1
+	repolocal=$1
+	reporemote=$2
+	checkLocal $repolocal
+	isLocal=$?
+	if [ $isLocal = "1" ]
+	then
+		$packageGit clone $reporemote
+	fi
 }
 
 gitPull() {
@@ -72,16 +87,17 @@ test -d $directorySource || mkdir $directorySource
 
 cd $directorySource
 
-gitClone $gitRepositoryLtp
-gitClone $gitRepositoryLinuxKernel
-gitClone $gitRepositoryFio
+gitClone $gitLocalLtp 		$gitRepositoryLtp
+gitClone $gitLocalLinuxKernel	$gitRepositoryLinuxKernel
+gitClone $gitLocalFio		$gitRepositoryFio
+gitClone $gitLocalFioVisualizer	$gitRepositoryFioVisualizer
+
 gitPull
 
 # Source Code Git Repositories Compilation #
-
-compileCommon "fio"
-compileLtp "ltp"
-compileLinuxKernel "linux"
+compileLtp $gitLocalLtp
+compileLinuxKernel $gitLocalLinuxKernel
+compileCommon $gitLocalFio
 
 cd $directoryRoot
 

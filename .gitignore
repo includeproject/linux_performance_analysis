@@ -2,3 +2,4 @@
 *~
 *.csv
 *tmp
+/web_scripts/Linux_performance_tests_page/nbproject/

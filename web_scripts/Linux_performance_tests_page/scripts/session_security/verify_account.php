@@ -1,128 +1,23 @@
 <?php
 
-header('Content-Type: text/html; charset=UTF-8');
 session_start();
+include_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/Linux_performance_tests_page' . '/scripts/session_security/validation_utils.php';
+include_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/Linux_performance_tests_page' . '/scripts/data_access/user.php';
+include_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/Linux_performance_tests_page' . '/scripts/session_security/session.php';
 
-include_once "conexion.php";
+$validation = new ValidationUtils();
+$usr = new User();
+$username = $validation->clean_post_data(filter_input(INPUT_POST, 'username'));
+$password = $validation->clean_post_data(filter_input(INPUT_POST, 'pass'));
+$encrypted = $validation->encrypt_password($password);
+$user = $usr->userExists($username, $encrypted);
 
-  $_SESSION['alert'] ="";
-  if (!mysql_select_db(DB_NAME)) {
-      echo mysql_error(); 
-  }
-  else {     
-    if (isset($_POST['username'])){
-        // Escape single quotes.->  addslashes
-        $user = addslashes($_POST['username']);
-        $pass = addslashes(md5($_POST['pass']));
-       
-        if(empty($user) && empty($pass)){
-          header("location: ../pages/login.php");
-        }else{
-          if(verify_account($user,$pass,$result) != 0){//Account exist
-            $_SESSION['alert'] = "";
-            header("location: ../pages/user_panel.php");
-          }
-          else{//Account doesn't exist
-            $_SESSION['alert'] = "Incorrect account or password";
-            header("location: ../pages/login.php");
-          }
-        }
-    }
-    if (isset($_POST['register'])) {
-      // Escape single quotes.->  addslashes
-      $_SESSION['firstname'] = addslashes($_POST['user_first_name']);
-      $_SESSION['lastname'] = addslashes($_POST['user_last_name']);
-      $_SESSION['user'] = addslashes($_POST['username']);
-      $_SESSION['email'] = addslashes($_POST['emailaddress']);
-      $pass = addslashes(md5($_POST['pass']));
-      $passconf = addslashes(md5($_POST['passconfirm']));
-      $firstname = $_SESSION['firstname'];
-      $lastname = $_SESSION['lastname'];
-      $user = $_SESSION['user'];
-      $email = $_SESSION['email'];
-      $bool = 0;
-      if (empty($firstname) || empty($lastname) || empty($user) || empty($email) || empty($pass) || empty($passconf)) {
-          $bool = 1;
-      }
-      if ($bool == 0) {
-          if (!preg_match("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+([a-zA-Z0-9\._-]+)+$/", $email)) {
-              $bool = -1;
-              $_SESSION['alert'] = "Email address invalid";
-              header("location:../pages/user_register.php");
-          } else {
-              if ($pass == $passconf) {
-                  if (verify_accountUser($user, $result) == 0) {//Account doesn't exist
-                      if (create_register($firstname, $lastname, $user, $email, $pass, $result) == 1) { //Account created
-                          $_SESSION['id_user'] = $result;
-                          $_SESSION['username'] = $_POST['username'];
-                          header("location:../pages/user_panel.php");
-                      } else {
-                          $_SESSION['alert'] = "Can't create account";
-                          header("location:../pages/user_register.php");
-                      }
-                  } else {
-                      $_SESSION['alert'] = "Invalid account";
-                      header("location:../pages/user_register.php");
-                  }
-              } else {
-                  $_SESSION['alert'] = "Confirm password";
-                  header("location:../pages/user_register.php");
-              }
-          }
-      } else {
-          $_SESSION['alert'] = "Obligatory information *";
-          header("location:../pages/user_register.php");
-      }
-    }
-  }
-
-
-function verify_account($user, $password, &$result) {
-    $sql = "SELECT * FROM user WHERE user = '$user' AND password = '$password'"
-            . "OR email = '$user' AND password = '$password'";
-    $rec = mysql_query($sql);
-    $id = -1;
-
-    if($rec){
-      $reg = mysql_fetch_row($rec);     
-      $id = $reg[0];
-      if($id == ""){
-        $id = 0;
-      }else{
-        $_SESSION['id_user'] = $id;
-        $_SESSION['username'] = $reg[1]; 
-      }
-    }
-    return $id;
-
-}
-
-function create_register($firstname, $lastname, $user, $email, $password, &$result) {
-    $host_dir = $_SERVER['DOCUMENT_ROOT'] . "/uploads/" . $user;
-    $sql = "INSERT INTO user VALUES (0,'$user','$password','$firstname',
-                  '$lastname','$email','$host_dir','1','2')";
-//        shell_exec('mkdir -p '. $host_dir);
-    if (!mkdir($host_dir, 0777, true)) {
-        die('Directory creation failed, please contact the administrator...');
-    }
-    $rslt = mysql_query($sql);
-    if ($rslt) {
-        return 1;
-    } else {
-        return 0;
-    }
-}
-
-
-function verify_accountUser($user, &$result) {
-    $sql = "SELECT * FROM user WHERE user = '$user' OR email = '$user'";    
-    $res = mysql_query($sql);
-    $id = -1;
-    if($res){
-      $reg = mysql_fetch_row($res);     
-      $id = $reg[0];
-      if($id == "")
-        $id = 0;
-    }
-    return $id;
+if ($user != NULL) {
+    $session = new Session();
+    $session->create($user);
+    header('location: http://' . filter_input(INPUT_SERVER, 'REMOTE_ADDR') . '/Linux_performance_tests_page' . '/pages/user_panel.php');
+} else {
+    $_SESSION['error'] = "Invalid username or password";
+    $_SESSION['user'] = $username;
+    header('location: http://' . filter_input(INPUT_SERVER, 'REMOTE_ADDR') . '/Linux_performance_tests_page' . '/pages/login.php');
 }

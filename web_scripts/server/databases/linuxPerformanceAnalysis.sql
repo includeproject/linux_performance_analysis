@@ -5,7 +5,7 @@ SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='TRADITIONAL,ALLOW_INVALID_DATES';
 
 
-CREATE SCHEMA IF NOT EXISTS `LinuxPerformanceAnalysis` DEFAULT CHARACTER SET utf8;
+CREATE SCHEMA IF NOT EXISTS `LinuxPerformanceAnalysis` DEFAULT CHARACTER SET utf8 ;
 USE `LinuxPerformanceAnalysis` ;
 
 -- -----------------------------------------------------
@@ -13,11 +13,8 @@ USE `LinuxPerformanceAnalysis` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LinuxPerformanceAnalysis`.`kernel` (
   `id_kernel` INT(11) NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(45) NULL,
-  `tag_version` VARCHAR(45) NOT NULL,
-  `latest_commit` VARCHAR(45) NULL,
-  `repository` VARCHAR(45) NULL,
-  `date` DATE NULL,
+  `name` VARCHAR(45) NULL DEFAULT NULL,
+  `tag_version` VARCHAR(45) NULL DEFAULT NULL,
   `status` VARCHAR(45) NULL DEFAULT NULL,
   PRIMARY KEY (`id_kernel`))
 ENGINE = InnoDB
@@ -30,12 +27,12 @@ DEFAULT CHARACTER SET = utf8;
 CREATE TABLE IF NOT EXISTS `LinuxPerformanceAnalysis`.`user` (
   `id_user` INT(11) NOT NULL AUTO_INCREMENT COMMENT 'number of user, used like id',
   `user` VARCHAR(16) NOT NULL COMMENT 'username, that is used for login',
-  `password` CHAR(32) NOT NULL COMMENT 'user password for login, use md5 encode.',
+  `password` VARCHAR(64) NOT NULL COMMENT 'user password for login, use md5 encode.',
   `first_name` VARCHAR(45) NOT NULL COMMENT 'first name of the user',
   `last_name` VARCHAR(45) NOT NULL COMMENT 'last name of the user',
   `email` VARCHAR(45) NOT NULL COMMENT 'contact email for the user',
   `host_directory` VARCHAR(256) NOT NULL COMMENT 'Each user must have a directory',
-  `active` CHAR(1) NOT NULL COMMENT '1 or 0 , if the user is active or not',
+  `active` INT(1) NOT NULL COMMENT '1 or 0 , if the user is active or not',
   `level` CHAR(1) NOT NULL COMMENT 'level of the user, 1 for admin 2 for others',
   PRIMARY KEY (`id_user`))
 ENGINE = InnoDB
@@ -64,7 +61,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `LinuxPerformanceAnalysis`.`tool`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LinuxPerformanceAnalysis`.`tool` (
-  `id_tool` INT(11) NOT NULL,
+  `id_tool` INT(11) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NULL DEFAULT NULL,
   `description` VARCHAR(45) NULL DEFAULT NULL,
   `download_repo` VARCHAR(45) NULL DEFAULT NULL,
@@ -99,7 +96,7 @@ DEFAULT CHARACTER SET = utf8;
 -- Table `LinuxPerformanceAnalysis`.`job`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `LinuxPerformanceAnalysis`.`job` (
-  `id_job` INT(11) NOT NULL,
+  `id_job` INT(11) NOT NULL AUTO_INCREMENT,
   `id_patch` INT(11) NOT NULL,
   `id_test` INT(11) NOT NULL,
   `id_kernel` INT(11) NOT NULL,

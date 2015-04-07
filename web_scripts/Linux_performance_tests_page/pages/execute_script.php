@@ -1,8 +1,6 @@
 <?php
-/* Empezamos la sesión */
 session_start();
-/* Si no hay una sesión creada, redireccionar al index. */
-if (empty($_SESSION['username'])) { // Recuerda usar corchetes.
+if (empty($_SESSION['username'])) { 
     header('Location: login.php');
 }
 ?>

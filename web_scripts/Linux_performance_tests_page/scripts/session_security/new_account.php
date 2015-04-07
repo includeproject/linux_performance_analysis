@@ -53,11 +53,12 @@ if (empty($email)) {
 if ($isValid) {
     $active = 1;
     $level = 2;
-    $host_directory = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/lpa_data/' . $username . '/';
+    $host_directory = filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/lpa_files/' . $username . '/';
     $encrypted = ($pass == $passconf) ? $validation->encrypt_password($pass) : NULL;
 
     $user = new User($username, $encrypted, $name, $lastname, $email, $host_directory, $active, $level);
-
+    mkdir($host_directory, 0777, TRUE);
+    chmod($host_directory, 0777);
     echo '1';
     $user->create($user);
     echo '2';

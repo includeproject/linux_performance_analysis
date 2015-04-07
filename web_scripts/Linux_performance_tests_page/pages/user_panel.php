@@ -1,8 +1,8 @@
 <?php
 session_start();
 
-if (empty($_SESSION['username']) && empty($_SESSION['pass'])) {
-    header('location: login.php');
+if (!isset($_SESSION['userid']) || !isset($_SESSION['active'])) {
+    header('location: http://' . filter_input(INPUT_SERVER, 'SERVER_NAME') . '/Linux_performance_tests_page' . '/pages/login.php');
 }
 ?>
 <!DOCTYPE html>
@@ -14,7 +14,6 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) {
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
         <link href="../assets/styles.css" rel="stylesheet" media="screen">
-        <script src="../vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>
     </head>
 
     <body>
@@ -29,7 +28,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) {
                     <ul class="nav pull-right">
                         <li class="dropdown">
                             <a href="#" role="button" class="dropdown-toggle" data-toggle="dropdown"> 
-                                <i class="icon-user"></i><?= $_SESSION['username']; ?> <i class="caret"></i>
+                                <i class="icon-user"></i><?php echo $_SESSION['username']; ?> <i class="caret"></i>
                             </a>
                             <ul class="dropdown-menu">
                                 <li>
@@ -37,7 +36,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) {
                                 </li>
                                 <li class="divider"></li>
                                 <li>
-                                    <a tabindex="-1" href="./../scripts/session_destroy.php">Logout</a>
+                                    <a tabindex="-1" href="<?php echo 'http://' . filter_input(INPUT_SERVER, 'SERVER_NAME') . '/Linux_performance_tests_page' . '/scripts/session_security/close_session.php'; ?>">Logout</a>
                                 </li>
                             </ul>
                         </li>
@@ -46,8 +45,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) {
             </div>
         </div>
         <div class="container-fluid">
-            <!--<div class="container">-->
-            <?php include '../scripts/nav-bar.php'; ?>
+            <?php include_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/Linux_performance_tests_page' . '/scripts/page_scripts/nav-bar.php'; ?>
             <div class="span9" id="content">
                 <div class="row-fluid">
                     <div class="span8 column">
@@ -56,7 +54,7 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) {
                                 <div class="muted pull-left">Uploaded patches</div>
                                 <div class="pull-right">
                                     <span class="badge badge-info"
-                                          ><?php echo count(glob($_SERVER['DOCUMENT_ROOT'] . "/uploads/" . $_SESSION['username'] . "/{*}", GLOB_BRACE)); ?>
+                                          ><?php echo count(glob(filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . "/uploads/" . $_SESSION['username'] . "/{*}", GLOB_BRACE)); ?>
                                     </span>
 
                                 </div>
@@ -85,24 +83,6 @@ if (empty($_SESSION['username']) && empty($_SESSION['pass'])) {
                                     </thead>
                                     <tbody>
                                         <?php
-                                        $directory = $_SERVER['DOCUMENT_ROOT'] . '/uploads/' . $_SESSION['username'] . '/';
-
-                                        $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator($directory));
-                                        $i = 0;
-                                        while ($it->valid()) {
-
-                                            if (!$it->isDot() && $i > 0) {
-                                                echo '<tr>';
-                                                echo '<td>' . $i . '</td>';
-                                                echo '<td> ' . $it->getSubPathName() . "</td>";
-                                                echo '<td>' . 'make a query' . "</td>";
-                                                echo "<td>Standby</td>";
-                                                echo '<td> <button id="' . $it->getSubPathName() . '" type="button" class="btn btn-warning btn-small test">Test</button></td>';
-                                                echo '</tr>';
-                                            }
-                                            $i++;
-                                            $it->next();
-                                        }
                                         ?>
                                     </tbody>
                                 </table>

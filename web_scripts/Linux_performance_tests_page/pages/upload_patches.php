@@ -45,7 +45,7 @@ if (empty($_SESSION['username'])) {
         </div>
         <div class="container-fluid">
             <!--<div class="container">-->
-            <?php include './../scripts/nav-bar.php'; ?>
+            <?php include_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/Linux_performance_tests_page' . '/scripts/page_scripts/nav-bar.php'; ?>
             <div class="span9" id="content">
                 <div class="row-fluid">
                     <form method="post" role="form" action="./../scripts/upload_patch.php" enctype="multipart/form-data">

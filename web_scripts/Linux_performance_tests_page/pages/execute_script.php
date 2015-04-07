@@ -63,7 +63,7 @@ if (empty($_SESSION['username'])) { // Recuerda usar corchetes.
         </div>
         <div class="container-fluid">
             <div class="row-fluid">
-                <?php include './../scripts/nav-bar.php'; ?>
+                <?php include_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/Linux_performance_tests_page' . '/scripts/page_scripts/nav-bar.php'; ?>
                 <!--/span-->
                 <div class="span9" id="content">
                     <div class="row-fluid">

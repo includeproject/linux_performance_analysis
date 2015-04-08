@@ -5,7 +5,7 @@ session_start();
 //  $alert = "";
 //}
 if ($_SESSION['active'] == 1 && isset($_SESSION['userid'])) {
-    header('location: http://' . filter_input(INPUT_SERVER, 'REMOTE_ADDR') . '/Linux_performance_tests_page' . '/pages/user_panel.php');
+    header('location: http://' . filter_input(INPUT_SERVER, 'SERVER_ADDR') . '/Linux_performance_tests_page' . '/pages/user_panel.php');
 }
 $firstname = $_SESSION['firstname'];
 $nameErr = $_SESSION['nameErr'];

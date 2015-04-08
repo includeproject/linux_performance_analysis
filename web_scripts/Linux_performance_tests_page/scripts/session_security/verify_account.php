@@ -15,9 +15,9 @@ $user = $usr->userExists($username, $encrypted);
 if ($user != NULL) {
     $session = new Session();
     $session->create($user);
-    header('location: http://' . filter_input(INPUT_SERVER, 'REMOTE_ADDR') . '/Linux_performance_tests_page' . '/pages/user_panel.php');
+    header('location: http://' . filter_input(INPUT_SERVER, 'SERVER_ADDR') . '/Linux_performance_tests_page' . '/pages/user_panel.php');
 } else {
     $_SESSION['error'] = "Invalid username or password";
     $_SESSION['user'] = $username;
-    header('location: http://' . filter_input(INPUT_SERVER, 'REMOTE_ADDR') . '/Linux_performance_tests_page' . '/pages/login.php');
+    header('location: http://' . filter_input(INPUT_SERVER, 'SERVER_ADDR') . '/Linux_performance_tests_page' . '/pages/login.php');
 }

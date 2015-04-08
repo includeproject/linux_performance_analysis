@@ -59,7 +59,7 @@ sudo vagrant ssh -c 'cd /home/vagrant/linux-stable && sudo make headers_install 
 sudo vagrant ssh -c 'cd /home/vagrant/linux-stable && sudo make install > make_install.log'
 sudo vagrant ssh -c 'sudo init 6'
 
-sudo vagrant --do rebuild
+sudo vagrant vbguest --do rebuild
 sudo vagrant reload
 
 

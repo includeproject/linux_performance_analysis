@@ -59,15 +59,13 @@ if ($isValid) {
     $user = new User($username, $encrypted, $name, $lastname, $email, $host_directory, $active, $level);
     mkdir($host_directory, 0777, TRUE);
     chmod($host_directory, 0777);
-    echo '1';
     $user->create($user);
-    echo '2';
     Session::create($user);
-    header('location: http://' . filter_input(INPUT_SERVER, 'REMOTE_ADDR') . '/Linux_performance_tests_page' . '/pages/user_panel.php');
+    header('location: http://' . filter_input(INPUT_SERVER, 'SERVER_ADDR') . '/Linux_performance_tests_page' . '/pages/user_panel.php');
 } else {
     $_SESSION['firstname'] = $name;
     $_SESSION['lastname'] = $lastname;
     $_SESSION['user'] = $username;
     $_SESSION['email'] = $email;
-    header('location: http://' . filter_input(INPUT_SERVER, 'REMOTE_ADDR') . '/Linux_performance_tests_page' . '/pages/user_register.php');
+    header('location: http://' . filter_input(INPUT_SERVER, 'SERVER_ADDR') . '/Linux_performance_tests_page' . '/pages/user_register.php');
 }

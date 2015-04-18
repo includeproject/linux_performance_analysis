@@ -3,7 +3,7 @@
 #################################################################
 # Shell monitoring Custom Deamon  "Starting script"             #
 # Most be run using the "." notation. Example:                  #
-# 'start_job.sh "git clone"&                                    #
+# '. start_job.sh "powertop"'                                   #
 #                                                               #
 #################################################################
 
@@ -21,6 +21,10 @@ export arrayLimit="non"
 # Script Functions
 # =============================================================================
 
+#startJob function
+#(All Using the globalIndex variable) Saves the commands names on the "jobsNames" variable.
+#Moves the arraylimit to the next slot. Executes the commands reirecting the stdout to a file called $name.log.
+#Saves the PID on the variable "jobsPIDs". Executes diown on the job's PID.
 startJob () {
     command=$1
 
@@ -34,10 +38,11 @@ startJob () {
     globalIndex=$(expr $globalIndex + 1)
 }
 
-
+#readVariablesFromFile function
+#Waits for the shell_monitor.lock to be removed. Creates a lock file.
+#Reads the "variable.file" Removes the lock file.
 readVariablesFromFile() {
     while [[ -e shell_monitor.lock ]]; do
-	sleep 1
     done
     
     lockfile -r 0 start_job.lock
@@ -45,12 +50,16 @@ readVariablesFromFile() {
     rm -f start_job.lock
 }
 
+#saveVariablesOnFile function
+# Waits to the shell_monitor lock file to be removed. Creates a lock file.
+#Using a "buffer" Variable and a while loop, saves the "jobsNames" and "jobsPIDs" variables as arrays using ->
+#-> the following format: "jobsNames=( $name $name $name $name non )" ending each loop on the $arraylimit, ->
+#-> Proceds to save it to the "variable.file" file using an echo. Removes the lock file
 saveVariablesOnFile (){
     declare -i index=0
     buffer=''
 
     while [[ -e shell_monitor.lock ]]; do
-	sleep 1
     done
     
     lockfile -r 0 start_job.lock
@@ -84,6 +93,8 @@ saveVariablesOnFile (){
 # Script Main
 # =============================================================================
 
+#Main
+#Reads the variable, starts the jobs and save it's variables to the "variable.file" file.
 readVariablesFromFile
 startjob $1
 saveVariablesOnFile

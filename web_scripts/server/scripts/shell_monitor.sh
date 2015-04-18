@@ -93,7 +93,6 @@ saveVariablesOnFile (){
 #Reads the file containing the variables. Delates the file lock. 
 readVariablesFromFile() { 
     while [[ -e start_job.lock ]]; do
-	sleep 1
     done
     
     lockfile -r 0 shell_monitor.lock

@@ -17,6 +17,7 @@ You must have these libraries and dependencies installed on your system
 - binutils
 - ncurses
 - ncurses-devel
+- bc
 
 ## Download the kernel source
 Here you have two options to get the source
@@ -24,7 +25,7 @@ Here you have two options to get the source
 You can get the source code from [kernel.org](https://www.kernel.org/). For example for the v3.19.1 stable release.
 ```sh
 $ wget -c https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.19.1.tar.xz
-$ tar -xJf linux-3.19.1.tar.xz
+$ tar -xJf linux-3.19.3.tar.xz
 $ cd linux-3.19.1
 ```
 The kernel comes as a 20 to 50 MB tar.xz file depending of the version. It will decompress to about 200 MB and during the later compilation you will need additional space.
@@ -33,7 +34,7 @@ In the other hand you can get the source from git and select the latest stable t
 ```sh
 $ git clone git://git.kernel.org/pub/scm/linux/kernel/git/stable/linux-stable.git
 $ cd linux-stable
-$ git checkout -b stable v3.19.1
+$ git checkout -b stable v3.19.3
 ```
 
 You can check all the stable tags available with:
@@ -121,6 +122,7 @@ Reboot your system and enjoy.
 * ```make bzImage```
 * ```make modules```
 * ```make modules_install```
+* ```make headers_install```
 
 
 ##References

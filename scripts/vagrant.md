@@ -19,7 +19,7 @@ This packages are required to mount the linux_performance box
 First you have to download the box file
 
 ```sh
-$ wget $FTPDIRECTION
+$ wget ftp://189.254.249.182/pub/linux_performance.box
 ```
 
 Now, move the box on the vagrant directory

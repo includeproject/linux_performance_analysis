@@ -51,6 +51,11 @@ export powertopVersion="2.7"
 export powertopPackage=$powertopName"-"$powertopVersion"tar.gz"
 export powertopPath="https://01.org/sites/default/files/downloads/"$powertopName"/"$powertopPackage
 
+export expectName=expect
+export expectVersion="5.45"
+export expectPackage=$expectName$expectVersion"tar.gz"
+export expectPath="http://sourceforge.net/projects/expect/files/Expect/"$expectVersion"/"$expectPackage"/download"
+
 # =============================================================================
 # Script Functions
 # =============================================================================
@@ -89,6 +94,7 @@ tarBallAll() {
 	tarBall $m4Name       $m4Version       $m4Package       $m4Path
 	tarBall $makeName     $makeVersion     $makePackage     $makePath
 	tarBall $powertopName $powertopVersion $powertopPackage $powertopPath
+	tarBall $expectName   $expectVersion   $expectPackage   $expectPath
 }
 
 # =============================================================================

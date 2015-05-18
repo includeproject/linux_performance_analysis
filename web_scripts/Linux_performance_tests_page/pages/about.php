@@ -3,18 +3,10 @@
 
     <head>
         <title>Admin Home Page</title>
-        <!-- Bootstrap -->
         <link href="../bootstrap/css/bootstrap.min.css" rel="stylesheet" media="screen">
         <link href="../bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" media="screen">
-        <!--<link href="../vendors/easypiechart/jquery.easy-pie-chart.css" rel="stylesheet" media="screen">-->
         <link href="../assets/styles.css" rel="stylesheet" media="screen">
-        <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-        <!--[if lt IE 9]>
-            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-        <![endif]-->
-        <!--<script src="../vendors/modernizr-2.6.2-respond-1.1.0.min.js"></script>-->
     </head>
-
     <body>
         <div class="navbar navbar-fixed-top">
             <div class="navbar-inner">
@@ -29,7 +21,7 @@
         </div>
         <div class="container-fluid">
             <div class="row-fluid">
-                <?php include '../scripts/nav-bar.php'; ?>
+                <?php include_once filter_input(INPUT_SERVER, 'DOCUMENT_ROOT') . '/Linux_performance_tests_page' . '/scripts/page_scripts/nav-bar.php'; ?>
                 <!--/span-->
                 <div class="span9" id="content">
                     <div class="row-fluid">
@@ -56,6 +48,61 @@
                                 <li>Powertop</li>
                                 <li>Flexible I/O tester (FIO)</li>
                             </ul>
+                            <pre>
+  _      _                    _____           __                                          
+ | |    (_)                  |  __ \         / _|                                         
+ | |     _ _ __  _   ___  __ | |__) |__ _ __| |_ ___  _ __ _ __ ___   __ _ _ __   ___ ___ 
+ | |    | | '_ \| | | \ \/ / |  ___/ _ \ '__|  _/ _ \| '__| '_ ` _ \ / _` | '_ \ / __/ _ \
+ | |____| | | | | |_| |>  <  | |  |  __/ |  | || (_) | |  | | | | | | (_| | | | | (_|  __/  _ _ _
+ |______|_|_| |_|\__,_/_/\_\ |_|   \___|_|  |_| \___/|_|  |_| |_| |_|\__,_|_| |_|\___\___| (_|_|_)
+
+                                 .:xxxxxxxx:. 
+                             .xxxxxxxxxxxxxxxx. 
+                            :xxxxxxxxxxxxxxxxxxx:. 
+                           .xxxxxxxxxxxxxxxxxxxxxxx: 
+                          :xxxxxxxxxxxxxxxxxxxxxxxxx: 
+                          xxxxxxxxxxxxxxxxxxxxxxxxxxX: 
+                          xxx:::xxxxxxxx::::xxxxxxxxx: 
+                         .xx:   ::xxxxx:     :xxxxxxxx 
+                         :xx  x.  xxxx:  xx.  xxxxxxxx 
+                         :xx xxx  xxxx: xxxx  :xxxxxxx 
+                         'xx 'xx  xxxx:. xx'  xxxxxxxx 
+                          xx ::::::xx:::::.   xxxxxxxx 
+                          xx:::::.::::.:::::::xxxxxxxx 
+                          :x'::::'::::':::::':xxxxxxxxx. 
+                          :xx.::::::::::::'   xxxxxxxxxx 
+                          :xx: '::::::::'     :xxxxxxxxxx. 
+                         .xx     '::::'        'xxxxxxxxxx. 
+                       .xxxx                     'xxxxxxxxx. 
+                     .xxxx                         'xxxxxxxxx. 
+                   .xxxxx:                          xxxxxxxxxx. 
+                  .xxxxx:'                          xxxxxxxxxxx. 
+                 .xxxxxx:::.           .       ..:::_xxxxxxxxxxx:. 
+                .xxxxxxx''      ':::''            ''::xxxxxxxxxxxx. 
+                xxxxxx            :                  '::xxxxxxxxxxxx 
+               :xxxx:'            :                    'xxxxxxxxxxxx: 
+              .xxxxx              :                     ::xxxxxxxxxxxx 
+              xxxx:'                                    ::xxxxxxxxxxxx 
+              xxxx               .                      ::xxxxxxxxxxxx. 
+          .:xxxxxx               :                      ::xxxxxxxxxxxx:: 
+          xxxxxxxx               :                      ::xxxxxxxxxxxxx: 
+          xxxxxxxx               :                      ::xxxxxxxxxxxxx: 
+          ':xxxxxx               '                      ::xxxxxxxxxxxx:' 
+            .:. xx:.                                   .:xxxxxxxxxxxxx' 
+          ::::::.'xx:.            :                  .:: xxxxxxxxxxx': 
+  .:::::::::::::::.'xxxx.                            ::::'xxxxxxxx':::. 
+  ::::::::::::::::::.'xxxxx                          :::::.'.xx.'::::::. 
+  ::::::::::::::::::::.'xxxx:.                       :::::::.'':::::::::   
+  ':::::::::::::::::::::.'xx:'                     .'::::::::::::::::::::.. 
+    :::::::::::::::::::::.'xx                    .:: ::::::::::::::::::::::: 
+  .:::::::::::::::::::::::. xx               .::xxxx ::::::::::::::::::::::: 
+  :::::::::::::::::::::::::.'xxx..        .::xxxxxxx ::::::::::::::::::::' 
+  '::::::::::::::::::::::::: xxxxxxxxxxxxxxxxxxxxxxx :::::::::::::::::' 
+    '::::::::::::::::::::::: xxxxxxxxxxxxxxxxxxxxxxx :::::::::::::::' 
+        ':::::::::::::::::::_xxxxxx::'''::xxxxxxxxxx '::::::::::::' 
+             '':.::::::::::'                        `._'::::::'' 
+                            </pre>
+                            <h3>Applying patches feature is coming soon!</h3>
                             </p>
                         </div>
                     </div>
@@ -63,11 +110,8 @@
             </div>
             <hr>
         </div>
-        <!--/.fluid-container-->
         <script src="../vendors/jquery-1.9.1.min.js"></script>
         <script src="../bootstrap/js/bootstrap.min.js"></script>
-        <!--<script src="../vendors/easypiechart/jquery.easy-pie-chart.js"></script>-->
-        <!--<script src="../assets/scripts.js"></script>-->
     </body>
 
 </html>
